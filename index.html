@@ -72,13 +72,14 @@ h1 .outline{color:transparent;-webkit-text-stroke:1.5px var(--ink)}
 .proof{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:18px;overflow:hidden;max-width:860px;margin:0 auto}
 .proof div{padding:26px 16px;border-left:1px solid var(--line)}
 .proof div:first-child{border-left:none}
-.proof strong{display:block;font-family:var(--head);font-weight:700;font-size:clamp(20px,2.6vw,30px);color:var(--acid);margin-bottom:6px}
-.proof span{font-size:13.5px;color:var(--mut)}
+.proof strong{display:block;font-family:var(--head);font-weight:700;font-size:clamp(17px,2.4vw,30px);color:var(--acid);margin-bottom:6px;white-space:nowrap}
+.proof span{font-size:13px;color:var(--mut)}
 @media(max-width:620px){
   .proof{grid-template-columns:1fr}
-  .proof div{border-left:none;border-top:1px solid var(--line);display:flex;align-items:baseline;gap:12px;padding:18px 22px}
+  .proof div{border-left:none;border-top:1px solid var(--line);display:flex;align-items:center;gap:16px;padding:16px 22px}
   .proof div:first-child{border-top:none}
-  .proof strong{margin:0}
+  .proof strong{margin:0;font-size:20px;white-space:nowrap;flex:none}
+  .proof span{font-size:13px}
 }
 
 /* ===== marquee ===== */
@@ -396,7 +397,7 @@ footer{border-top:1px solid var(--line);padding:44px 0}
       <p>Внутри я показываю <b>не мотивацию, а процесс</b>: какие кнопки нажимаю, какие промты ввожу, куда выгружаю и как считаю деньги.</p>
       <div class="story-sign">
         <img src="./avatar.jpg" alt="3NMA — автор клуба" />
-        <div><strong>3NMA</strong><span>автор клуба · 40+ млн стримов</span></div>
+        <div><strong>3NMA</strong><span>40+ млн стримов</span></div>
       </div>
     </div>
     <div class="tl rv">
