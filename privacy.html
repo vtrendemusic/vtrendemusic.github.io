@@ -1,71 +1,96 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Политика конфиденциальности | Закрытый клуб Music AI</title>
-    <link rel="icon" type="image/jpeg" href="./favicon.jpg" />
-    <link rel="apple-touch-icon" href="./apple-touch-icon.jpg" />
-    <link rel="stylesheet" href="./styles.css?v=8" />
-  </head>
-  <body class="legal-page">
-    <header class="site-header">
-      <a class="brand" href="./index.html" aria-label="Закрытый клуб">
-        <img src="./2026-05-16%2022.34.41.jpg" alt="" />
-        <span>ЗАКРЫТЫЙ КЛУБ</span>
-      </a>
-      <a class="header-cta" href="https://t.me/vtrendevip_bot?start=site" target="_blank" rel="noopener noreferrer">Посмотреть урок</a>
-    </header>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, follow" />
+<title>Политика конфиденциальности | Закрытый клуб Music AI</title>
+<link rel="icon" type="image/jpeg" href="./favicon.jpg" />
+<link rel="apple-touch-icon" href="./apple-touch-icon.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#0a0a0a;--ink:#f5f5f0;--mut:#8a8a85;--line:rgba(245,245,240,.12);
+  --acid:#d4ff3f;--head:'Unbounded',sans-serif;--body:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+::selection{background:var(--acid);color:#0a0a0a}
+a{color:var(--acid);text-decoration:none}
+a:hover{text-decoration:underline}
+img{display:block;max-width:100%}
+.wrap{max-width:820px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--acid)}
 
-    <main class="legal-content">
-      <span class="section-kicker">Документ</span>
-      <h1>Политика конфиденциальности</h1>
-      <p>
-        Настоящая политика описывает, какие данные могут обрабатываться при использовании
-        сайта vtrendemusic.com закрытого клуба Music AI.
-      </p>
+header{border-bottom:1px solid var(--line);background:rgba(10,10,10,.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);position:sticky;top:0;z-index:10}
+.h-in{max-width:1100px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px;font-family:var(--head);font-weight:700;font-size:12px;letter-spacing:.2em;color:var(--ink)}
+.logo img{width:34px;height:34px;border-radius:50%;object-fit:cover}
+.logo b{color:var(--acid)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13.5px;padding:10px 20px;border-radius:999px;background:var(--acid);color:#0a0a0a;transition:transform .18s}
+.btn:hover{transform:translateY(-2px);text-decoration:none}
 
-      <h2>Какие данные могут обрабатываться</h2>
-      <p>
-        Сайт не собирает банковские данные, номера карт, пароли и платежные реквизиты.
-        При обращении в поддержку могут обрабатываться контактные данные, которые
-        вы указываете самостоятельно (например, адрес электронной почты).
-      </p>
+main{padding:80px 0 100px}
+.mono.lead{display:block;margin-bottom:18px}
+h1{font-family:var(--head);font-weight:900;font-size:clamp(28px,5vw,46px);line-height:1.1;letter-spacing:-.01em;margin-bottom:28px}
+h2{font-family:var(--head);font-weight:700;font-size:clamp(18px,2.6vw,24px);margin:44px 0 14px}
+p{color:#c6c6c2;margin-bottom:16px}
+p.muted{color:var(--mut);font-size:15px}
+.back{display:inline-flex;align-items:center;gap:8px;margin-top:48px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.back:hover{color:var(--acid);text-decoration:none}
 
-      <h2>Для чего используются данные</h2>
-      <p>
-        Данные используются для выдачи доступа к закрытому клубу, обработки обращений
-        и связи с пользователем по вопросам доступа к материалам.
-      </p>
+footer{border-top:1px solid var(--line);padding:40px 0}
+.f-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;align-items:flex-start}
+.f-in small{display:block;color:var(--mut);font-size:13px;max-width:420px;margin-top:10px}
+.f-brand{font-family:var(--head);font-size:13px;font-weight:700;color:var(--ink)}
+.f-brand b{color:var(--acid)}
+.f-links{display:flex;gap:24px;font-size:14px;color:var(--mut);flex-wrap:wrap}
+.f-links a{color:var(--mut)}
+.f-links a:hover{color:var(--acid);text-decoration:none}
+</style>
+</head>
+<body>
+<header>
+  <div class="h-in">
+    <a class="logo" href="./index.html">MUSIC&nbsp;<b>AI</b>&nbsp;CLUB</a>
+    <a class="btn" href="https://t.me/vtrendevip_bot?start=site" target="_blank" rel="noopener noreferrer">Сделать трек</a>
+  </div>
+</header>
 
-      <h2>Контакты</h2>
-      <p>
-        По вопросам обработки данных можно обратиться по электронной почте:
-        <a href="mailto:vtrendeclub@outlook.com">vtrendeclub@outlook.com</a>.
-      </p>
-    </main>
+<main>
+  <div class="wrap">
+    <span class="mono lead">Документ</span>
+    <h1>Политика конфиденциальности</h1>
+    <p>Настоящая политика описывает, какие данные могут обрабатываться при использовании сайта vtrendemusic.com закрытого клуба Music AI.</p>
 
-    <footer class="footer">
-      <div class="footer-col footer-brand">
-        <span class="footer-brand-name">Закрытый клуб Music AI</span>
-        <span class="footer-note">Информационный ресурс. Результаты индивидуальны и не являются гарантией дохода.</span>
-      </div>
-      <nav class="footer-col footer-links" aria-label="Юридическая информация">
-        <span class="footer-col-title">Информация</span>
-        <a href="./privacy.html">Политика конфиденциальности</a>
-        <a href="./contacts.html">Контакты</a>
-      </nav>
-      <div class="footer-col footer-social">
-        <span class="footer-col-title">Соц сети</span>
-        <div class="footer-social-icons">
-          <a href="https://t.me/vtrendevip_bot" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
-          </a>
-          <a href="https://www.youtube.com/@vtrendemusic" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
-          </a>
-        </div>
-      </div>
-    </footer>
-  </body>
+    <h2>Какие данные могут обрабатываться</h2>
+    <p>Сайт не собирает банковские данные, номера карт, пароли и платёжные реквизиты. При обращении в поддержку могут обрабатываться контактные данные, которые вы указываете самостоятельно (например, адрес электронной почты).</p>
+
+    <h2>Для чего используются данные</h2>
+    <p>Данные используются для выдачи доступа к закрытому клубу, обработки обращений и связи с пользователем по вопросам доступа к материалам.</p>
+
+    <h2>Контакты</h2>
+    <p>По вопросам обработки данных можно обратиться по электронной почте: <a href="mailto:vtrendeclub@outlook.com">vtrendeclub@outlook.com</a>.</p>
+
+    <a class="back" href="./index.html">← На главную</a>
+  </div>
+</main>
+
+<footer>
+  <div class="f-in">
+    <div>
+      <span class="f-brand">MUSIC&nbsp;<b>AI</b>&nbsp;CLUB</span>
+      <small>Информационный ресурс. Результаты индивидуальны и не являются гарантией дохода.</small>
+    </div>
+    <nav class="f-links" aria-label="Ссылки">
+      <a href="./privacy.html">Конфиденциальность</a>
+      <a href="./contacts.html">Контакты</a>
+      <a href="https://t.me/vtrendevip_bot" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a href="https://www.youtube.com/@vtrendemusic" target="_blank" rel="noopener noreferrer">YouTube</a>
+    </nav>
+  </div>
+</footer>
+</body>
 </html>
