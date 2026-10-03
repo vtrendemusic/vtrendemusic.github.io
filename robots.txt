@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vtrendemusic.com/sitemap.xml
+Sitemap: https://vtrendemusic.github.io/sitemap.xml
