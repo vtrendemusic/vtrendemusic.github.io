@@ -2,267 +2,327 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Закрытый клуб Music AI: биты через ИИ, вокал на телефон, сведение и релиз на стриминги. Все плагины и сэмпл-паки внутри. Вход — $29." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>СУПЕР ГАЙД — самый простой гайд, как стать рэпером</title>
+<meta name="description" content="Биты, запись на телефон, тексты и монетизация — всё в одном Telegram-канале. Записал на телефон и набрал 50 млн прослушиваний. Полный комплект музыканта за $29." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://vtrendemusic.info/" />
-<meta property="og:title" content="Записал на телефон. Набрал 50 млн прослушиваний." />
-<meta property="og:description" content="Закрытый клуб Music AI: бит через ИИ, вокал на телефон, релиз на стриминги. Все плагины и файлы внутри. Вход — $29." />
+<meta property="og:title" content="Я собрал самый простой гайд, как стать рэпером" />
+<meta property="og:description" content="Биты, студия на телефоне, тексты и монетизация. Всё в Telegram, от А до Я. $29." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://vtrendemusic.info/" />
 <meta property="og:image" content="https://vtrendemusic.info/og-image.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
-<title>Music AI Club — треки на телефон, биты через ИИ</title>
-<link rel="icon" type="image/svg+xml" href="./logo.svg" />
 <link rel="icon" type="image/png" sizes="64x64" href="./favicon.png" />
 <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
-<script>document.documentElement.classList.add('js')</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
 :root{
-  --bg:#0a0a0a;
-  --card:#0e0e0d;
-  --ink:#f5f5f0;
-  --mut:#8a8a85;
-  --line:rgba(245,245,240,.12);
-  --acid:#d4ff3f;
-  --acid-dim:rgba(212,255,63,.14);
-  --head:'Unbounded',sans-serif;
-  --body:'Inter',sans-serif;
-  --mono:'JetBrains Mono',monospace;
+  --bg:#0e1621;          /* фон тёмной темы Telegram */
+  --panel:#17212b;
+  --panel2:#1e2c3a;
+  --line:#253545;
+  --text:#eef2f6;
+  --muted:#8b9cad;
+  --tg:#2aabee;          /* фирменный синий Telegram */
+  --tg2:#229ed9;
+  --link:#6ab3f3;
+  --money:#5ed36a;
+  --hot:#ff5a5f;
+  --r:18px;
 }
-*{margin:0;padding:0;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-::selection{background:var(--acid);color:#0a0a0a}
+body{background:var(--bg);color:var(--text);font:16px/1.55 Inter,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
+html{overflow-x:hidden;overflow-x:clip}
 a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
-.mono{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--acid)}
-.acid{color:var(--acid)}
+img,video{display:block;max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.display{font-family:"Inter Tight",Inter,sans-serif;font-weight:800;letter-spacing:-.02em;word-spacing:.04em;line-height:1.05}
 
-/* ===== header ===== */
-header{position:fixed;inset:0 0 auto;z-index:40;border-bottom:1px solid var(--line);background:rgba(10,10,10,.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
-.h-in{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.logo{display:flex;align-items:center;gap:12px;font-family:var(--head);font-weight:700;font-size:12px;letter-spacing:.2em;white-space:nowrap}
-.logo img{width:34px;height:34px;border-radius:50%;object-fit:cover}
-.logo b{color:var(--acid)}
-@media(max-width:420px){
-  .h-in{padding:12px 16px}
-  .logo{font-size:10px;letter-spacing:.12em;gap:9px}
-  .logo img{width:30px;height:30px}
-}
+/* ---------- шапка ---------- */
+.top{position:sticky;top:0;z-index:30;background:rgba(14,22,33,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:12px;height:60px}
+.ava{width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center;background:linear-gradient(135deg,#2aabee,#1c6fb8);font:800 17px "Inter Tight",sans-serif;color:#fff}
+.chan{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+.chan b{font-weight:700;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chan span{font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:420px){.top .btn{padding:9px 14px;font-size:14px}.top .btn svg{display:none}}
+.top .btn{margin-left:auto}
 
-/* ===== buttons ===== */
-.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;padding:15px 30px;border-radius:999px;cursor:pointer;border:none;transition:transform .18s,background .18s,color .18s;white-space:nowrap}
-.btn-acid{background:var(--acid);color:#0a0a0a}
-.btn-acid:hover{transform:translateY(-2px) scale(1.02)}
-.btn-line{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.btn-line:hover{border-color:var(--acid);color:var(--acid)}
-.btn-sm{padding:10px 20px;font-size:13.5px}
-@media(max-width:420px){.btn-sm{padding:9px 15px;font-size:13px}}
-.btn svg{width:16px;height:16px;fill:currentColor;flex:none}
+/* ---------- кнопки ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--tg);color:#fff;font-weight:700;border-radius:999px;padding:11px 18px;font-size:15px;transition:transform .15s,background .15s;white-space:nowrap}
+.btn:hover{background:var(--tg2)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn.big{padding:18px 28px;font-size:18px;width:100%;max-width:420px}
+.btn .price{opacity:.85;font-weight:600}
+.note{font-size:13px;color:var(--muted);margin-top:10px}
 
-/* ===== hero ===== */
-.hero{padding:164px 0 0;text-align:center;position:relative}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(640px 320px at 50% 0%,rgba(212,255,63,.09),transparent 70%)}
-.hero .mono{display:block;margin-bottom:26px}
-h1{font-family:var(--head);font-weight:900;font-size:clamp(26px,7vw,72px);line-height:1.06;letter-spacing:-.01em;max-width:960px;margin:0 auto 28px;text-wrap:balance}
-.hero p{max-width:620px;margin:0 auto 40px;color:var(--mut);font-size:18.5px}
-.hero p b{color:var(--ink);font-weight:600}
-.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:64px}
+/* ---------- первый экран ---------- */
+.hero{padding:34px 0 26px;text-align:center}
+.pin{font-weight:700;font-size:clamp(15px,4.2vw,19px);color:var(--link);line-height:1.35}
+.pin b{color:#fff}
+.hero h1{font-size:clamp(31px,8.4vw,64px);margin:18px auto 0;max-width:900px}
+.hero h1 em{font-style:normal;color:var(--tg)}
+.hero .lead{font-size:clamp(17px,4.4vw,20px);color:#c9d4de;max-width:640px;margin:18px auto 0}
+.hero .lead b{color:#fff}
+.hero .cta{margin-top:26px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:30px auto 0;max-width:720px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 8px}
+.stat b{display:block;font:800 clamp(21px,6vw,32px)/1.1 "Inter Tight",sans-serif;letter-spacing:-.015em;white-space:nowrap}
+.stat.m b{color:var(--money)}
+.stat span{display:block;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.3}
+.nav4{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:22px}
+.nav4 a{background:var(--panel2);border-radius:999px;padding:8px 14px;font-size:13.5px;font-weight:600}
+.nav4 a i{font-style:normal;color:var(--tg);margin-right:6px}
 
-/* proof strip */
-.proof{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--line);border-radius:18px;overflow:hidden;max-width:600px;margin:0 auto}
-.proof div{padding:26px 16px;border-left:1px solid var(--line)}
-.proof div:first-child{border-left:none}
-.proof strong{display:block;font-family:var(--head);font-weight:700;font-size:clamp(17px,2.4vw,30px);color:var(--acid);margin-bottom:6px;white-space:nowrap}
-.proof span{font-size:13px;color:var(--mut)}
-@media(max-width:620px){
-  .proof{grid-template-columns:1fr}
-  .proof div{border-left:none;border-top:1px solid var(--line);padding:18px 24px}
-  .proof div:first-child{border-top:none}
-  .proof strong{font-size:26px;margin-bottom:2px}
-}
+/* ---------- блоки «проблема → решение» ---------- */
+.prob{padding:54px 0 10px}
+.ph{display:block}
+.ph h2{min-width:0;overflow-wrap:break-word}
+.pn{display:block;font-size:14px;font-weight:600;color:var(--link);margin-bottom:6px}
+.ph h2{font-size:clamp(34px,9vw,60px)}
+.pain{margin-top:16px;display:block;max-width:560px;background:rgba(42,171,238,.08);border-left:3px solid var(--tg);border-radius:4px 10px 10px 4px;padding:9px 14px;font-size:16px;font-weight:500;color:#dbe6f0}
+.pain s{opacity:.8}
+.solve{font-size:clamp(17px,4.5vw,21px);margin-top:14px;max-width:760px;color:#d6dee6}
+.solve b{color:#fff}
 
-/* ===== marquee ===== */
-.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:18px 0;margin:80px 0 0}
-.marquee-track{display:flex;width:max-content;animation:scroll 28s linear infinite}
-.marquee span{font-family:var(--head);font-weight:700;font-size:14px;letter-spacing:.22em;white-space:nowrap;padding:0 28px;color:var(--mut)}
-.marquee span:nth-child(odd){color:var(--acid)}
-@keyframes scroll{to{transform:translateX(-50%)}}
+/* посты из канала */
+.feed{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:22px 16px 6px;margin:0 -16px;scrollbar-width:none}
+.feed::-webkit-scrollbar{display:none}
+.post{flex:0 0 min(86%,380px);scroll-snap-align:center;background:var(--panel);border-radius:16px 16px 16px 4px;overflow:hidden;border:1px solid var(--line)}
+.thumb{position:relative;aspect-ratio:16/9.1;background:#000}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb .dur{position:absolute;left:10px;top:10px;background:rgba(0,0,0,.6);color:#fff;font-size:13px;font-weight:600;border-radius:10px;padding:4px 9px}
+.thumb .play{position:absolute;inset:0;margin:auto;width:58px;height:58px;border-radius:50%;background:rgba(0,0,0,.55);display:grid;place-items:center}
+.thumb .play:after{content:"";border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
+.post .body{padding:12px 14px 12px}
+.post h3{font-size:15px;font-weight:700;line-height:1.35;text-transform:uppercase}
+.tc{margin-top:8px;font-size:14px;line-height:1.75}
+.tc a{color:var(--link)}
+.meta{display:flex;justify-content:flex-end;gap:10px;color:var(--muted);font-size:12px;margin-top:6px}
+.swipe{font-size:12.5px;color:var(--muted);text-align:center;margin-top:6px}
 
-/* ===== sections ===== */
-section{padding:110px 0}
-@media(max-width:720px){section{padding:72px 0}}
-h2{font-family:var(--head);font-weight:700;font-size:clamp(26px,3.6vw,44px);line-height:1.15;letter-spacing:-.01em;text-wrap:balance}
-.s-head{margin-bottom:48px;max-width:720px}
-.s-head .mono{display:block;margin-bottom:18px}
-.s-head p{color:var(--mut);margin-top:18px;font-size:17.5px}
-
-/* ===== A/B player ===== */
-.ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-@media(max-width:820px){.ab-grid{grid-template-columns:1fr}}
-.ab{border:1px solid var(--line);border-radius:22px;padding:28px;background:var(--card);transition:border-color .25s}
-.ab:hover{border-color:rgba(212,255,63,.4)}
-@media(max-width:420px){.ab{padding:22px 18px}}
-.ab-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;gap:12px}
-.ab-top h3{font-family:var(--head);font-size:15px;font-weight:700}
-.switch{display:flex;border:1px solid var(--line);border-radius:999px;padding:4px;gap:4px}
-.switch button{font-family:var(--mono);font-size:11px;letter-spacing:.12em;border:none;background:transparent;color:var(--mut);padding:8px 16px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
-.switch button.on{background:var(--acid);color:#0a0a0a;font-weight:700}
-.ab-body{display:flex;align-items:center;gap:18px}
-.ab-play{flex:none;width:58px;height:58px;border-radius:50%;border:none;cursor:pointer;background:var(--ink);color:#0a0a0a;display:flex;align-items:center;justify-content:center;transition:transform .15s,background .2s}
-.ab.playing .ab-play{background:var(--acid)}
-.ab-play:hover{transform:scale(1.06)}
-.ab-play svg{width:20px;height:20px;fill:currentColor}
+/* до / после */
+.ab-grid{display:grid;gap:12px;margin-top:22px}
+@media(min-width:760px){.ab-grid{grid-template-columns:1fr 1fr}}
+.ab{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.ab-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ab-top h3{font-size:15px}
+.switch{display:flex;background:var(--bg);border-radius:999px;padding:3px}
+.switch button{border:0;background:none;color:var(--muted);font:700 12.5px Inter,sans-serif;padding:8px 13px;border-radius:999px;cursor:pointer}
+.switch button.on{background:var(--panel2);color:#fff}
+.switch .sw-after.on{background:var(--tg);color:#fff}
+.ab-body{display:flex;align-items:center;gap:14px;margin-top:14px}
+.ab-play{width:54px;height:54px;flex:none;border-radius:50%;border:0;background:#fff;display:grid;place-items:center;cursor:pointer}
+.ab-play svg{width:24px;height:24px;fill:#0e1621}
 .ab-mid{flex:1;min-width:0}
-.ab-state{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--mut);margin-bottom:10px;text-transform:uppercase}
-.ab.playing .ab-state{color:var(--acid)}
-.ab-bar{height:38px;display:flex;align-items:center;cursor:pointer}
-.ab-bar-inner{position:relative;width:100%;height:4px;border-radius:99px;background:rgba(245,245,240,.14)}
-.ab-fill{position:absolute;inset:0 auto 0 0;width:0%;border-radius:99px;background:var(--acid)}
-.ab-time{flex:none;font-family:var(--mono);font-size:12px;color:var(--mut);width:42px;text-align:right}
+.ab-state{font-size:13.5px;color:var(--muted)}
+.ab.after .ab-state{color:var(--link)}
+.ab-bar{height:22px;display:flex;align-items:center;cursor:pointer}
+.ab-bar-inner{height:4px;width:100%;background:var(--line);border-radius:2px;overflow:hidden}
+.ab-fill{height:100%;width:0;background:var(--tg)}
+.ab-time{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
 
-/* ===== inside ===== */
-.inside-list{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:680px){.inside-list{grid-template-columns:1fr}}
-.inside-list li{list-style:none;display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);border-radius:16px;padding:20px 22px;background:var(--card);transition:border-color .2s,background .2s}
-.inside-list li:hover{border-color:rgba(212,255,63,.4);background:var(--acid-dim)}
-.inside-list .ck{flex:none;width:26px;height:26px;border-radius:50%;background:var(--acid);display:flex;align-items:center;justify-content:center;margin-top:1px}
-.inside-list .ck svg{width:14px;height:14px;stroke:#0a0a0a;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.inside-list p{font-size:15.5px;line-height:1.5;color:var(--mut)}
-.inside-list b{font-weight:600;color:var(--ink)}
+/* рифмовник */
+.rif{display:grid;gap:22px;align-items:center;margin-top:22px}
+@media(min-width:760px){.rif{grid-template-columns:300px 1fr}}
+.phone{width:min(270px,72vw);margin:0 auto;border-radius:34px;padding:9px;background:#05080c;border:1px solid #2a3a4a;box-shadow:0 30px 80px rgba(42,171,238,.18)}
+.phone video{border-radius:26px;width:100%;aspect-ratio:9/16;object-fit:cover;background:#0b0f14}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{background:var(--panel2);border-radius:999px;padding:8px 13px;font-size:14px}
+.chips span b{color:var(--tg)}
 
-/* плагины — главный бонус */
-.vault{margin-top:14px;border:1px solid rgba(212,255,63,.45);border-radius:20px;padding:34px 34px;background:radial-gradient(520px 240px at 90% -20%,rgba(212,255,63,.13),transparent),var(--card);display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center}
-@media(max-width:620px){.vault{grid-template-columns:1fr;gap:16px;padding:26px 22px}}
-.vault-ico{width:64px;height:64px;border-radius:18px;background:var(--acid);display:flex;align-items:center;justify-content:center}
-.vault-ico svg{width:30px;height:30px;stroke:#0a0a0a;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.vault h3{font-family:var(--head);font-size:clamp(17px,2vw,21px);font-weight:700;margin-bottom:8px}
-.vault p{color:var(--mut);font-size:15.5px;max-width:640px}
 
-/* скрины из клуба */
-.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
-@media(max-width:820px){
-  .shots{grid-auto-flow:column;grid-auto-columns:80%;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;margin-left:-24px;margin-right:-24px;padding-left:24px;padding-right:24px;scrollbar-width:none}
-  .shots::-webkit-scrollbar{display:none}
-  .shot{scroll-snap-align:center}
-}
-.shot{position:relative;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--card);transition:transform .25s,border-color .25s}
-.shot:hover{transform:translateY(-5px);border-color:rgba(212,255,63,.45)}
-.shot-img{position:relative;height:380px;overflow:hidden}
-.shot-img img{width:100%}
-.shot-img::after{content:"";position:absolute;inset:auto 0 0;height:90px;background:linear-gradient(transparent,var(--card))}
-.shot .tag{position:absolute;z-index:2;top:14px;left:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#0a0a0a;background:var(--acid);border-radius:999px;padding:6px 13px;font-weight:700}
-.shot figcaption{padding:4px 20px 20px;font-size:14px;color:var(--ink);font-weight:500;line-height:1.45}
-.shots-foot{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:16px}
-.shots-hint{font-size:13px;color:var(--mut);text-align:center}
-.shots-nav{display:none;gap:8px;flex:none}
-.shots-nav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s,opacity .2s}
-.shots-nav button:hover{border-color:var(--acid);color:var(--acid)}
-.shots-nav button:disabled{opacity:.3;cursor:default;border-color:var(--line);color:var(--ink)}
-@media(max-width:820px){
-  .shots-foot{justify-content:space-between}
-  .shots-hint{text-align:left}
-  .shots-nav{display:flex}
-}
 
-/* ===== faq ===== */
-.faq{max-width:780px}
-details{border-top:1px solid var(--line)}
-details:last-child{border-bottom:1px solid var(--line)}
-summary{list-style:none;cursor:pointer;padding:24px 4px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:var(--head);font-size:15px;font-weight:700;transition:color .2s}
-summary:hover{color:var(--acid)}
-summary::-webkit-details-marker{display:none}
-summary .x{flex:none;font-family:var(--mono);font-size:18px;color:var(--acid);transition:transform .25s}
-details[open] .x{transform:rotate(45deg)}
-details p{padding:0 4px 26px;color:var(--mut);font-size:15.5px;max-width:680px}
-details p b{color:var(--ink);font-weight:600}
+/* статистика в стиле Telegram */
+.tstat{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:18px;margin-top:22px}
+.tstat-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.tstat-h b{font-size:17px}
+.tstat-h span,.pay-h span{font-size:12.5px;color:var(--muted)}
+.tstat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.tstat-grid div{background:var(--bg);border-radius:14px;padding:14px}
+.tstat-grid span{display:block;font-size:13px;color:var(--muted)}
+.tstat-grid b{display:block;font:800 clamp(22px,6.4vw,34px)/1.15 "Inter Tight",sans-serif;letter-spacing:-.015em;margin-top:4px;white-space:nowrap}
+.tstat-grid b.g{color:var(--money)}
+.pay{margin-top:20px}
+.pay-h b{display:block;font-size:16px}
+.pay-h span{display:block;margin-top:2px}
+.row{display:grid;grid-template-columns:78px 1fr auto;align-items:center;gap:10px;margin-top:12px;font-size:14px}
+.row .l{color:#c9d4de;line-height:1.2}
+.row .l em{display:block;font-style:normal;font-size:11.5px;color:var(--link)}
+.row b{font-variant-numeric:tabular-nums;min-width:62px;text-align:right}
+.bar{height:12px;background:var(--bg);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,#1c6fb8,var(--tg));transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
+.tstat.in .bar i{width:var(--w)}
+.row.me b{color:var(--money)}
+.row.me .bar i{background:linear-gradient(90deg,#2f8f3a,var(--money))}
 
-/* ===== final ===== */
-.final{text-align:center;padding:120px 24px;position:relative;overflow:hidden}
-.final::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(700px 360px at 50% 110%,rgba(212,255,63,.12),transparent 70%)}
-.final .mono{display:block;margin-bottom:24px}
-.final h2{font-size:clamp(30px,4.6vw,56px);max-width:820px;margin:0 auto 22px}
-.final p{color:var(--mut);max-width:520px;margin:0 auto 40px}
-.eq{display:flex;gap:5px;justify-content:center;align-items:flex-end;height:34px;margin-bottom:36px}
-.eq i{width:4px;border-radius:99px;background:var(--acid);animation:eq 1.1s ease-in-out infinite}
-.eq i:nth-child(2){animation-delay:.15s}.eq i:nth-child(3){animation-delay:.3s}
-.eq i:nth-child(4){animation-delay:.45s}.eq i:nth-child(5){animation-delay:.6s}
-.eq i:nth-child(6){animation-delay:.25s}.eq i:nth-child(7){animation-delay:.5s}
-@keyframes eq{0%,100%{height:8px}50%{height:34px}}
-@media(prefers-reduced-motion:reduce){.eq i,.marquee-track{animation:none}.eq i{height:18px}}
+/* всё в telegram */
+.tgbox{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px;margin-top:22px}
+.files{display:grid;gap:4px;margin-top:6px}
+@media(min-width:760px){.files{grid-template-columns:1fr 1fr;column-gap:22px}}
+.file{display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--line)}
+.file:last-child{border-bottom:0}
+.fi{width:46px;height:46px;border-radius:50%;background:var(--tg);display:grid;place-items:center;flex:none}
+.fi svg{width:22px;height:22px;fill:#fff}
+.file b{display:block;font-size:15.5px}
+.file span{font-size:13px;color:var(--muted)}
 
-/* ===== footer ===== */
-footer{border-top:1px solid var(--line);padding:44px 0}
-.f-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;align-items:flex-start}
-.f-in small{display:block;color:var(--mut);font-size:13px;max-width:420px;margin-top:10px}
-.f-links{display:flex;gap:24px;font-size:14px;color:var(--mut);flex-wrap:wrap}
-.f-links a:hover{color:var(--acid)}
+/* уроки */
+.lessons{margin-top:22px;display:grid;gap:14px}
+@media(min-width:760px){.lessons{grid-template-columns:1fr 1fr}}
+.lgroup{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 16px 8px}
+.lgroup h4{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.lesson{display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:14.5px;line-height:1.4}
+.lesson:first-of-type{border-top:0}
+.lesson i{font-style:normal;color:var(--tg);font-weight:800;min-width:22px}
+.lesson em{font-style:normal;margin-left:auto;padding-left:8px;font-size:11.5px;color:var(--muted);white-space:nowrap}
+.lesson.soon{color:#b9c5d1}
 
-/* ===== reveal (только если JS работает) ===== */
-.js .rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
-.js .rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}}
+/* цена */
+.price-card{background:linear-gradient(160deg,#1b3550,#17212b 55%);border:1px solid #2d4a66;border-radius:26px;padding:28px 20px;text-align:center;margin-top:22px}
+.price-card .old{color:var(--muted);font-size:15px}
+.price-card .amount{font:900 clamp(72px,20vw,112px)/1 "Inter Tight",sans-serif;letter-spacing:-.05em;margin:8px 0 2px}
+.price-card .once{color:#c9d4de}
+.incl{text-align:left;max-width:480px;margin:22px auto 24px;display:grid;gap:10px}
+.incl div{display:flex;gap:11px;font-size:16px}
+.incl div:before{content:"✓";color:var(--money);font-weight:800}
+.vs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:560px;margin:0 auto 24px}
+.vs div{background:rgba(0,0,0,.2);border-radius:12px;padding:10px 6px;font-size:12px;color:var(--muted)}
+.vs b{display:block;color:#fff;font-size:15px;text-decoration:line-through;text-decoration-color:var(--hot)}
+
+/* faq */
+.faq{margin-top:22px;display:grid;gap:10px}
+.faq details{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:0 16px}
+.faq summary{list-style:none;cursor:pointer;padding:16px 0;font-weight:700;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";color:var(--tg);font-size:22px;line-height:1}
+.faq details[open] summary:after{content:"–"}
+.faq p{padding:0 0 16px;color:#c9d4de}
+
+.sec{padding:54px 0 0}
+.sec h2{font-size:clamp(26px,6.6vw,44px)}
+.sec .sub{color:var(--muted);margin-top:10px;font-size:16px}
+.final{text-align:center;padding:64px 0 40px}
+.final h2{font-size:clamp(28px,7.4vw,52px)}
+.final p{color:#c9d4de;margin:14px auto 24px;max-width:520px}
+footer{border-top:1px solid var(--line);padding:26px 0 calc(110px + env(safe-area-inset-bottom));color:var(--muted);font-size:13px}
+footer .links{display:flex;flex-wrap:wrap;gap:16px;margin-top:10px}
+footer a{color:var(--link)}
+
+/* липкая кнопка на телефоне */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(14,22,33,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .25s}
+.dock.show{transform:none}
+.dock .btn{width:100%;padding:15px}
+@media(min-width:900px){.dock{display:none}footer{padding-bottom:30px}}
+
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.rv.in{opacity:1;transform:none}
+html:not(.js) .rv{opacity:1;transform:none}
 </style>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
-<header>
-  <div class="h-in">
-    <a class="logo" href="#top"><img src="./logo.svg" alt="" />MUSIC&nbsp;<b>AI</b>&nbsp;CLUB</a>
-    <a class="btn btn-acid btn-sm" href="https://t.me/vtrendevip_bot?start=site" target="_blank" rel="noopener noreferrer">Сделать трек</a>
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.3 13.1l-4.8-1.5c-1-.3-1.1-1 .2-1.5L20.5 2.9c.9-.3 1.6.2 1.4 1.4z"/></symbol>
+  <symbol id="file" viewBox="0 0 24 24"><path d="M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm7 1.5V9h5.5L13 3.5z"/></symbol>
+  <symbol id="folder" viewBox="0 0 24 24"><path d="M10 4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6z"/></symbol>
+  <symbol id="note" viewBox="0 0 24 24"><path d="M12 3v10.6A4 4 0 1 0 14 17V7h4V3h-6z"/></symbol>
+</svg>
+
+<!-- ============ ШАПКА в стиле канала ============ -->
+<header class="top">
+  <div class="wrap">
+    <div class="ava">S</div>
+    <div class="chan"><b>СУПЕР ГАЙД</b><span>закрытый Telegram-канал</span></div>
+    <a class="btn" href="https://t.me/vtrendevip_bot?start=site"><svg><use href="#tg"/></svg>Сделать трек</a>
   </div>
 </header>
 
-<main id="top">
-
-<!-- ============ HERO ============ -->
+<!-- ============ ПЕРВЫЙ ЭКРАН ============ -->
 <section class="hero">
   <div class="wrap">
-    <h1>Записал на телефон. <span class="acid">Набрал 50&nbsp;млн прослушиваний.</span></h1>
-    <p><b>Бит — через ИИ. Вокал — на смартфон дома. Сведение — тоже ИИ.</b> В клубе я показываю весь процесс по шагам и отдаю все плагины и файлы, на которых работаю сам.</p>
-    <div class="hero-cta">
-      <a class="btn btn-acid" href="https://t.me/vtrendevip_bot?start=site" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
-        Сделать трек
-      </a>
-      <a class="btn btn-line" href="#listen">Послушать до/после ↓</a>
+    <h1 class="display">Я собрал <em>самый простой</em> гайд, как стать рэпером</h1>
+    <p class="lead">Закрываю 4 главные проблемы любого артиста: <b>биты, студия, текст и деньги</b>. Всё в одном Telegram-канале, разжёвано от А до Я.</p>
+    <div class="cta">
+      <a class="btn big" href="https://t.me/vtrendevip_bot?start=site"><svg><use href="#tg"/></svg>Сделать трек</a>
     </div>
-    <div class="proof">
-      <div><strong>50+ млн</strong><span>прослушиваний моих треков</span></div>
-      <div><strong>$25 000</strong><span>со стримингов</span></div>
+    <div class="stats">
+      <div class="stat"><b>53 млн</b><span>прослушиваний моих треков</span></div>
+      <div class="stat m"><b>$25K</b><span>со стримингов</span></div>
+      <div class="stat"><b>6 мес</b><span>на всё это</span></div>
     </div>
-  </div>
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>БИТ</span><span>ТЕКСТ</span><span>ЗАПИСЬ</span><span>СВЕДЕНИЕ</span><span>ОБЛОЖКА</span><span>РЕЛИЗ</span><span>ПЛАГИНЫ</span>
-      <span>БИТ</span><span>ТЕКСТ</span><span>ЗАПИСЬ</span><span>СВЕДЕНИЕ</span><span>ОБЛОЖКА</span><span>РЕЛИЗ</span><span>ПЛАГИНЫ</span>
-    </div>
+    <nav class="nav4">
+      <a href="#beats"><i>01</i>Биты</a>
+      <a href="#studio"><i>02</i>Студия</a>
+      <a href="#text"><i>03</i>Текст</a>
+      <a href="#money"><i>04</i>Монетизация</a>
+    </nav>
   </div>
 </section>
 
-<!-- ============ LISTEN ============ -->
-<section id="listen">
+<!-- ============ 01 БИТЫ ============ -->
+<section class="prob" id="beats">
   <div class="wrap">
-    <div class="s-head rv">
-      <span class="mono">01 · До / После</span>
-      <h2>Одна и та же запись с телефона. До и после ИИ</h2>
-      <p>Никакого микрофона и студии. Нажми play и переключай прямо во время трека.</p>
+    <div class="ph rv"><span class="pn">Проблема 1 из 4</span><h2 class="display">Биты</h2></div>
+    <div class="pain rv">Нет денег на битмейкера? Не умеешь делать музыку?</div>
+    <p class="solve rv">За <b>1 час</b> научишься делать свои биты <b>в любом жанре</b>. Создавай биты с помощью ИИ или перебивай <b>любой бит</b>, который тебе понравился. Ты сам себе битмейкер — <b>бесплатно</b>, и воплощаешь любые фантазии.</p>
+
+    <div class="feed rv">
+      <article class="post">
+        <div class="thumb"><img src="img/lesson-3.jpg" alt="Урок 2 — бит в Ableton" loading="lazy" /></div>
+        <div class="body">
+          <h3>Урок 2. Делаем хитовый бит с помощью ИИ! Секрет хитового семпла!!</h3>
+          <div class="tc">
+            <a>00:00</a> Про хитовые биты на успешных семплах<br>
+            <a>03:30</a> Делаем семпл<br>
+            <a>12:18</a> Пишем драмку — снейр<br>
+            <a>18:06</a> Пишем драмку — хэты<br>
+            <a>23:12</a> Пишем драмку — кик<br>
+            <a>26:45</a> Пишем басс<br>
+            <a>32:27</a> Перкусии и разбавочки<br>
+            <a>35:35</a> Делаем структуру и переходы<br>
+            <a>40:34</a> Слушаем бит
+          </div>
+          <div class="meta"><span>📎 1.5 GB</span></div>
+        </div>
+      </article>
+      <article class="post">
+        <div class="thumb"><img src="img/lesson-8.jpg" alt="Урок 7 — перебиваем любой бит" loading="lazy" /><span class="play"></span></div>
+        <div class="body">
+          <h3>Урок 7. Перебиваем абсолютно любой бит в любом жанре с помощью ИИ! Генерация битов!</h3>
+          <div class="meta"><span>Ableton · пошагово</span></div>
+        </div>
+      </article>
+      <article class="post">
+        <div class="thumb"><img src="img/lesson-6.jpg" alt="Урок 5 — теория музыки" loading="lazy" /></div>
+        <div class="body">
+          <h3>Урок 5. Вся теория музыки за 20 минут</h3>
+          <div class="meta"><span>📎 1.6 GB</span></div>
+        </div>
+      </article>
     </div>
+    <div class="swipe">← листай уроки →</div>
+  </div>
+</section>
+
+<!-- ============ 02 СТУДИЯ ============ -->
+<section class="prob" id="studio">
+  <div class="wrap">
+    <div class="ph rv"><span class="pn">Проблема 2 из 4</span><h2 class="display">Студия и оборудование</h2></div>
+    <div class="pain rv">Нет студии, микрофона и звуковой карты?</div>
+    <p class="solve rv">За <b>1 час</b> научишься записывать треки <b>на телефон</b> и обрабатывать их с помощью новых технологий, чтобы они звучали <b>как со студии</b>. Не веришь? Послушай сам:</p>
+
     <div class="ab-grid">
       <div class="ab rv" data-before="./1.mp3" data-after="./2.mp3">
         <div class="ab-top">
           <h3>Трек 01</h3>
-          <div class="switch">
-            <button class="sw-before on" type="button">ДО</button>
-            <button class="sw-after" type="button">ПОСЛЕ ИИ</button>
-          </div>
+          <div class="switch"><button class="sw-before on" type="button">ДО</button><button class="sw-after" type="button">ПОСЛЕ</button></div>
         </div>
         <div class="ab-body">
           <button class="ab-play" type="button" aria-label="Воспроизвести">
@@ -270,20 +330,16 @@ footer{border-top:1px solid var(--line);padding:44px 0}
             <svg class="i-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
           </button>
           <div class="ab-mid">
-            <div class="ab-state">Сырая запись с телефона</div>
+            <div class="ab-state">📱 Сырая запись с телефона</div>
             <div class="ab-bar"><div class="ab-bar-inner"><div class="ab-fill"></div></div></div>
           </div>
           <div class="ab-time">0:00</div>
         </div>
       </div>
-
       <div class="ab rv" data-before="./4.mp3" data-after="./3.mp3">
         <div class="ab-top">
           <h3>Трек 02</h3>
-          <div class="switch">
-            <button class="sw-before on" type="button">ДО</button>
-            <button class="sw-after" type="button">ПОСЛЕ ИИ</button>
-          </div>
+          <div class="switch"><button class="sw-before on" type="button">ДО</button><button class="sw-after" type="button">ПОСЛЕ</button></div>
         </div>
         <div class="ab-body">
           <button class="ab-play" type="button" aria-label="Воспроизвести">
@@ -291,7 +347,7 @@ footer{border-top:1px solid var(--line);padding:44px 0}
             <svg class="i-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
           </button>
           <div class="ab-mid">
-            <div class="ab-state">Сырая запись с телефона</div>
+            <div class="ab-state">📱 Сырая запись с телефона</div>
             <div class="ab-bar"><div class="ab-bar-inner"><div class="ab-fill"></div></div></div>
           </div>
           <div class="ab-time">0:00</div>
@@ -301,193 +357,214 @@ footer{border-top:1px solid var(--line);padding:44px 0}
   </div>
 </section>
 
-<!-- ============ INSIDE ============ -->
-<section id="inside">
+<!-- ============ 03 ТЕКСТ ============ -->
+<section class="prob" id="text">
   <div class="wrap">
-    <div class="s-head rv">
-      <span class="mono">02 · Что внутри</span>
-      <h2>Весь путь трека — от бита до релиза</h2>
-    </div>
-
-    <ul class="inside-list rv">
-      <li>
-        <span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
-        <p><b>Биты через ИИ.</b> От первого сэмпла до готового бита в любом жанре.</p>
-      </li>
-      <li>
-        <span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
-        <p><b>Вокал на телефон.</b> Как записаться дома, чтобы звучало как со студии.</p>
-      </li>
-      <li>
-        <span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
-        <p><b>Сведение с ИИ.</b> Как из сырой дорожки сделать звук, который не стыдно выпустить.</p>
-      </li>
-      <li>
-        <span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
-        <p><b>Обложки и видео через нейросети.</b> Без дизайнера и фотошопа.</p>
-      </li>
-      <li>
-        <span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
-        <p><b>Релиз и монетизация.</b> Как выгрузить трек на площадки и как платят стриминги.</p>
-      </li>
-      <li>
-        <span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
-        <p><b>Готовые промты и ссылки.</b> На все нейронки, которыми пользуюсь сам.</p>
-      </li>
-    </ul>
-
-    <div class="vault rv">
-      <div class="vault-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg></div>
+    <div class="ph rv"><span class="pn">Проблема 3 из 4</span><h2 class="display">Текст</h2></div>
+    <div class="pain rv">Рифмы выходят кринжовыми? Не знаешь, что написать?</div>
+    <div class="rif">
+      <div class="phone rv"><video src="img/rifmovnik.mp4" autoplay muted loop playsinline preload="metadata"></video></div>
       <div>
-        <h3>Плагины, сэмпл-паки и пресеты — на гигабайты</h3>
-        <p>Профессиональные плагины и мои авторские сэмпл-паки, которые я собирал больше 10 лет. Всё лежит в клубе: скачал — и работаешь, ничего не ищешь.</p>
-      </div>
-    </div>
-
-    <div class="shots rv">
-      <figure class="shot">
-        <span class="tag">Урок · бит с ИИ</span>
-        <div class="shot-img"><img src="./photo_2026-06-13_09-19-55.jpg" alt="Урок: делаем хитовый бит с помощью ИИ" loading="lazy" /></div>
-        <figcaption>Пошаговый разбор с таймкодами + сэмпл-пак к уроку</figcaption>
-      </figure>
-      <figure class="shot">
-        <span class="tag">Урок · сэмплы</span>
-        <div class="shot-img"><img src="./photo_2026-06-13_09-19-58.jpg" alt="Урок: как делать уникальные сэмплы" loading="lazy" /></div>
-        <figcaption>4 сэмпла и бит за один урок + плагины со ссылками</figcaption>
-      </figure>
-      <figure class="shot">
-        <span class="tag">Файлы · плагины</span>
-        <div class="shot-img"><img src="./photo_2026-06-13_09-20-01.jpg" alt="Плагины и файлы внутри клуба" loading="lazy" /></div>
-        <figcaption>Плагины и файлы — уже внутри, качай сразу</figcaption>
-      </figure>
-    </div>
-    <div class="shots-foot">
-      <p class="shots-hint">Настоящие скриншоты из клуба. Формат — закрытый Telegram-канал, новые уроки выходят регулярно.</p>
-      <div class="shots-nav">
-        <button class="shots-prev" type="button" aria-label="Предыдущий скриншот">←</button>
-        <button class="shots-next" type="button" aria-label="Следующий скриншот">→</button>
+        <p class="solve rv">С текстом больше нет проблем. Я создал <b>Рифмовник</b> — он обучен на <b>всём русском рэпе</b> и подберёт идеальную рифму. Не кринжовую, а <b>крутую по звучанию</b>.</p>
+        <div class="chips rv" style="margin-top:18px">
+          <span><b>7 800+</b> рифм</span>
+          <span>ударения и созвучия</span>
+          <span>рифмы из настоящего рэпа</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section id="faq">
+<!-- ============ 04 МОНЕТИЗАЦИЯ ============ -->
+<section class="prob" id="money">
   <div class="wrap">
-    <div class="s-head rv">
-      <span class="mono">03 · Вопросы</span>
-      <h2>Коротко и по делу</h2>
+    <div class="ph rv"><span class="pn">Проблема 4 из 4</span><h2 class="display">Монетизация</h2></div>
+    <div class="pain rv">Нет бюджета на продвижение? Не знаешь, сколько платят?</div>
+    <p class="solve rv">Научишься продвигать музыку <b>без вложений</b> и получать <b>хорошие стримы</b>. Выгрузка на площадки, продвижение, деньги со стримингов — всё на моём примере. Вот мои цифры:</p>
+    <div class="tstat rv">
+      <div class="tstat-h"><b>Моя статистика</b><span>данные дистрибьютора</span></div>
+      <div class="tstat-grid">
+        <div><span>Прослушивания</span><b>53 975 112</b></div>
+        <div><span>Со стримингов</span><b class="g">$24 816</b></div>
+      </div>
+      <div class="pay">
+        <div class="pay-h"><b>Сколько платят стриминги</b><span>по моей средней ставке ≈ $0,46 за 1 000 прослушиваний</span></div>
+        <div class="row"><span class="l">100 тыс.</span><div class="bar"><i style="--w:38%"></i></div><b>$46</b></div>
+        <div class="row"><span class="l">1 млн</span><div class="bar"><i style="--w:61%"></i></div><b>$460</b></div>
+        <div class="row"><span class="l">10 млн</span><div class="bar"><i style="--w:83%"></i></div><b>$4 600</b></div>
+        <div class="row me"><span class="l">53,9 млн<em>мои треки</em></span><div class="bar"><i style="--w:100%"></i></div><b>$24 816</b></div>
+      </div>
     </div>
-    <div class="faq rv">
-      <details>
-        <summary>Сколько стоит?<span class="x">+</span></summary>
-        <p><b>$29 — около 2 200 ₽.</b> Это меньше, чем аренда одного бита или час на студии. Оплата прямо в Telegram-боте, после неё сразу открывается доступ.</p>
-      </details>
-      <details>
-        <summary>У меня ноль опыта. Потяну?<span class="x">+</span></summary>
-        <p>Да. Всё показано с нуля и по шагам: теорию музыки закроешь за час, дальше — бит, запись, сведение, обложка и релиз.</p>
-      </details>
-      <details>
-        <summary>Что нужно из техники?<span class="x">+</span></summary>
-        <p>Телефон для записи вокала и компьютер для битов. Микрофон, звуковая карта и студия не нужны.</p>
-      </details>
-      <details>
-        <summary>На этом реально заработать?<span class="x">+</span></summary>
-        <p>Да: стриминги, продажа битов, сведение и обложки на заказ. Я показываю, как это устроено, на своих цифрах. Но деньги приносит практика, а не сама покупка клуба — гарантировать доход честно не может никто.</p>
-      </details>
+</div>
+  </div>
+</section>
+
+<!-- ============ ВСЁ В TELEGRAM ============ -->
+<section class="sec">
+  <div class="wrap">
+    <h2 class="display rv">Всё уже лежит в Telegram</h2>
+    <p class="sub rv">Все программы, плагины и файлы — прямо в канале. Скачал и работаешь, ничего не нужно искать.</p>
+    <div class="tgbox rv">
+      <div class="files">
+        <div class="file"><span class="fi"><svg><use href="#folder"/></svg></span><div><b>Программы</b><span>всё, на чём я делаю треки</span></div></div>
+        <div class="file"><span class="fi"><svg><use href="#folder"/></svg></span><div><b>Плагины</b><span>для битов, вокала и сведения</span></div></div>
+        <div class="file"><span class="fi"><svg><use href="#note"/></svg></span><div><b>Сэмпл-паки</b><span>мои паки, собранные за 10 лет</span></div></div>
+        <div class="file"><span class="fi"><svg><use href="#file"/></svg></span><div><b>Пресеты</b><span>готовые цепочки на голос</span></div></div>
+        <div class="file"><span class="fi"><svg><use href="#file"/></svg></span><div><b>Гайды и шпаргалки</b><span>коротко по каждому шагу</span></div></div>
+        <div class="file"><span class="fi"><svg><use href="#file"/></svg></span><div><b>Видеоуроки</b><span>смотри с телефона или скачивай</span></div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FINAL ============ -->
-<section class="final">
-  <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-  <span class="mono">Закрытый клуб · $29</span>
-  <h2>Студия уже у тебя в кармане</h2>
-  <p>Телефон и компьютер у тебя есть. Плагины, файлы и пошаговые уроки — в клубе.</p>
-  <a class="btn btn-acid" href="https://t.me/vtrendevip_bot?start=site" target="_blank" rel="noopener noreferrer">
-    <svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
-    Сделать трек
-  </a>
+<!-- ============ ПРОГРАММА ============ -->
+<section class="sec" id="lessons">
+  <div class="wrap">
+    <h2 class="display rv">Все уроки</h2>
+    <p class="sub rv">От первого бита до релиза и денег. Новые уроки выходят постоянно — они тоже твои.</p>
+    <div class="lessons">
+      <div class="lgroup rv">
+        <h4>Учимся делать нормальные биты с нуля</h4>
+        <div class="lesson"><i>1</i>Делаем хитовый бит с помощью ИИ! Учимся правильно воровать сначала!</div>
+        <div class="lesson"><i>2</i>Делаем хитовый бит с помощью ИИ! Секрет хитового семпла!!</div>
+        <div class="lesson"><i>3</i>Как заработать на таких битах? Делаем ещё 3 хитовых бита за 5 минут!!</div>
+        <div class="lesson"><i>4</i>Как делать уникальные сэмплы! Сделали 4 семпла и 1 бит!</div>
+      </div>
+      <div class="lgroup rv">
+        <h4>Теория музыки и ноты</h4>
+        <div class="lesson"><i>5</i>Вся теория музыки за 20 минут</div>
+        <div class="lesson"><i>6</i>Вытягиваем ноты баса с любого сэмпла</div>
+        <h4 style="margin-top:14px">Любые биты с помощью ИИ</h4>
+        <div class="lesson"><i>7</i>Перебиваем абсолютно любой бит в любом жанре с помощью ИИ! Генерация битов!</div>
+        <div class="lesson"><i>8</i>Бонус-урок! ИИ-плагины для создания битов!</div>
+      </div>
+      <div class="lgroup rv" style="grid-column:1/-1">
+        <h4>Запись, сведение, релиз и деньги</h4>
+        <div class="lesson"><i>9</i>Полный гайд по Suno! Хитовый семпл, любая ударка, любая генерация</div>
+        <div class="lesson"><i>10</i>Как записать трек на мобильный телефон</div>
+        <div class="lesson"><i>11</i>Сведение треков с помощью ИИ! Из записи на телефон — в студийную!</div>
+        <div class="lesson"><i>12</i>Делаем трек в любом жанре с любой обработкой!</div>
+        <div class="lesson"><i>13</i>Как сводить трек полностью через ИИ! Он делает всё за вас!</div>
+        <div class="lesson"><i>14</i>Мастеринг и ИИ-плагины для мастеринга</div>
+        <div class="lesson"><i>15</i>Как отгрузить трек на площадки и зарабатывать</div>
+        <div class="lesson"><i>16</i>Как делать ИИ-визуал и обложки</div>
+        <div class="lesson"><i>17</i>Как продвигать свои треки без рекламы? Сколько платят?</div>
+      </div>
+    </div>
+  </div>
 </section>
-</main>
+
+<!-- ============ ЦЕНА ============ -->
+<section class="sec" id="price">
+  <div class="wrap">
+    <div class="price-card rv">
+      <div class="display" style="font-size:clamp(22px,6vw,34px)">Полный комплект музыканта</div>
+      <div class="amount">$29</div>
+      <div class="once">один раз · ≈ 2 200 ₽</div>
+      <div class="incl">
+        <div>Делаешь биты в любом жанре сам</div>
+        <div>Записываешь треки на телефон без студии</div>
+        <div>Рифмовник — рифмы из всего русского рэпа</div>
+        <div>Продвижение и монетизация без вложений</div>
+        <div>Все программы, плагины и сэмпл-паки</div>
+        <div>Все новые уроки — бесплатно</div>
+      </div>
+      <div class="vs">
+        <div><b>Бит</b>у битмейкера</div>
+        <div><b>Студия</b>за час записи</div>
+        <div><b>Сведение</b>у звукаря</div>
+      </div>
+      <a class="btn big" href="https://t.me/vtrendevip_bot?start=site"><svg><use href="#tg"/></svg>Сделать трек <span class="price">· $29</span></a>
+      <div class="note">Это самый лёгкий и простой гайд во всём интернете</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ВОПРОСЫ ============ -->
+<section class="sec">
+  <div class="wrap">
+    <h2 class="display rv">Вопросы</h2>
+    <div class="faq">
+      <details class="rv"><summary>Это генерация треков нейросетью?</summary><p>Нет. Трек делаешь ты: твой голос, твой текст, твой бит. Нейросети в клубе — это инструменты, как плагины: помогают сделать сэмпл, свести или нарисовать обложку. А звучать будешь ты.</p></details>
+      <details class="rv"><summary>У меня ноль опыта. Потяну?</summary><p>Да. Всё разжёвано с нуля и по шагам: теорию музыки закроешь за 20 минут, дальше — бит, запись, текст, релиз.</p></details>
+      <details class="rv"><summary>Что нужно из техники?</summary><p>Телефон для записи и компьютер для битов. Микрофон, звуковая карта и студия не нужны.</p></details>
+      <details class="rv"><summary>Где проходят уроки?</summary><p>В закрытом Telegram-канале. Смотришь с телефона или компьютера, все файлы скачиваешь там же.</p></details>
+      <details class="rv"><summary>Сколько стоит и как оплатить?</summary><p>$29 один раз — около 2 200 ₽. Оплата прямо в Telegram-боте, доступ открывается сразу.</p></details>
+      <details class="rv"><summary>Реально на этом заработать?</summary><p>Да: стриминги, продажа битов, сведение на заказ. Я показываю всё на своих цифрах. Результат зависит от тебя и твоей практики.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ФИНАЛ ============ -->
+<section class="final">
+  <div class="wrap">
+    <h2 class="display rv">Стань рэпером. Сегодня.</h2>
+    <p class="rv">Биты, студия, текст и деньги — всё в одном Telegram-канале за $29.</p>
+    <a class="btn big rv" href="https://t.me/vtrendevip_bot?start=site"><svg><use href="#tg"/></svg>Сделать трек <span class="price">· $29</span></a>
+  </div>
+</section>
 
 <footer>
-  <div class="f-in">
-    <div>
-      <span class="logo" style="font-size:11px">MUSIC&nbsp;<b>AI</b>&nbsp;CLUB</span>
-      <small>Информационный ресурс. Результаты индивидуальны и не являются гарантией дохода.</small>
-    </div>
-    <nav class="f-links" aria-label="Ссылки">
+  <div class="wrap">
+    <div>СУПЕР ГАЙД · Информационный ресурс. Результаты индивидуальны и не являются гарантией дохода.</div>
+    <div class="links">
       <a href="./privacy.html">Конфиденциальность</a>
       <a href="./contacts.html">Контакты</a>
-      <a href="https://t.me/vtrendevip_bot" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a href="https://t.me/vtrendevip_bot">Telegram</a>
       <a href="https://www.youtube.com/@vtrendemusic" target="_blank" rel="noopener noreferrer">YouTube</a>
-    </nav>
+    </div>
   </div>
 </footer>
 
+<div class="dock" id="dock"><a class="btn" href="https://t.me/vtrendevip_bot?start=site"><svg><use href="#tg"/></svg>Сделать трек</a></div>
+
 <script>
-// reveal on scroll
+// появление блоков при прокрутке
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// страховка: если наблюдатель не сработал, показываем по прокрутке
+const revealCheck=()=>document.querySelectorAll('.rv:not(.in)').forEach(el=>{if(el.getBoundingClientRect().top<innerHeight*0.95)el.classList.add('in')});
+addEventListener('scroll',revealCheck,{passive:true});addEventListener('load',revealCheck);
 
-// карусель скринов: стрелки для мыши (на телефоне — свайп)
-(()=>{
-  const track=document.querySelector('.shots'),prev=document.querySelector('.shots-prev'),next=document.querySelector('.shots-next');
-  const step=()=>track.querySelector('.shot').offsetWidth+18;
-  const update=()=>{prev.disabled=track.scrollLeft<=4;next.disabled=track.scrollLeft+track.clientWidth>=track.scrollWidth-4};
-  prev.addEventListener('click',()=>track.scrollBy({left:-step(),behavior:'smooth'}));
-  next.addEventListener('click',()=>track.scrollBy({left:step(),behavior:'smooth'}));
-  track.addEventListener('scroll',update,{passive:true});
-  addEventListener('resize',update);
-  update();
-})();
+// липкая кнопка: показываем после первого экрана
+const dock=document.getElementById('dock'),hero=document.querySelector('.hero .cta');
+new IntersectionObserver(([e])=>dock.classList.toggle('show',!e.isIntersecting&&e.boundingClientRect.top<0)).observe(hero);
 
-// A/B players with live switching
+// плееры «до/после» с переключением на лету
 const units=[];
 document.querySelectorAll('.ab').forEach(ab=>{
   const a={before:new Audio(ab.dataset.before),after:new Audio(ab.dataset.after)};
   a.before.preload='metadata';a.after.preload='metadata';
   let mode='before';
-  const playBtn=ab.querySelector('.ab-play'),
-        iPlay=ab.querySelector('.i-play'),iPause=ab.querySelector('.i-pause'),
-        fill=ab.querySelector('.ab-fill'),bar=ab.querySelector('.ab-bar'),
-        time=ab.querySelector('.ab-time'),state=ab.querySelector('.ab-state'),
-        swB=ab.querySelector('.sw-before'),swA=ab.querySelector('.sw-after');
+  const playBtn=ab.querySelector('.ab-play'),iPlay=ab.querySelector('.i-play'),iPause=ab.querySelector('.i-pause'),
+        fill=ab.querySelector('.ab-fill'),bar=ab.querySelector('.ab-bar'),time=ab.querySelector('.ab-time'),
+        state=ab.querySelector('.ab-state'),swB=ab.querySelector('.sw-before'),swA=ab.querySelector('.sw-after');
   const cur=()=>a[mode];
   const fmt=s=>isFinite(s)?Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'):'0:00';
-  const setIcons=playing=>{iPlay.style.display=playing?'none':'';iPause.style.display=playing?'':'none';ab.classList.toggle('playing',playing)};
+  const setIcons=p=>{iPlay.style.display=p?'none':'';iPause.style.display=p?'':'none'};
   const unit={pauseAll(){a.before.pause();a.after.pause();setIcons(false)}};
   units.push(unit);
-
   const tick=()=>{const c=cur();fill.style.width=(c.currentTime/c.duration*100||0)+'%';time.textContent=fmt(c.currentTime)};
   [a.before,a.after].forEach(x=>{
     x.addEventListener('timeupdate',()=>{if(x===cur())tick()});
     x.addEventListener('ended',()=>{if(x===cur()){setIcons(false);fill.style.width='0%'}});
   });
-
   playBtn.addEventListener('click',()=>{
     const c=cur();
     if(c.paused){units.forEach(u=>{if(u!==unit)u.pauseAll()});c.play();setIcons(true)}
     else{c.pause();setIcons(false)}
   });
-
-  bar.addEventListener('click',e=>{
-    const r=bar.getBoundingClientRect(),c=cur();
-    if(isFinite(c.duration)){c.currentTime=(e.clientX-r.left)/r.width*c.duration;tick()}
-  });
-
+  bar.addEventListener('click',e=>{const r=bar.getBoundingClientRect(),c=cur();if(isFinite(c.duration)){c.currentTime=(e.clientX-r.left)/r.width*c.duration;tick()}});
   function switchTo(m){
     if(m===mode)return;
-    const from=cur(),wasPlaying=!from.paused,ratio=from.duration?from.currentTime/from.duration:0;
+    const from=cur(),was=!from.paused,ratio=from.duration?from.currentTime/from.duration:0;
     from.pause();mode=m;const to=cur();
-    const apply=()=>{if(isFinite(to.duration))to.currentTime=ratio*to.duration;if(wasPlaying){to.play();setIcons(true)}tick()};
-    if(isFinite(to.duration)&&to.duration>0)apply();
-    else to.addEventListener('loadedmetadata',apply,{once:true});
-    swB.classList.toggle('on',m==='before');
-    swA.classList.toggle('on',m==='after');
-    state.textContent=m==='before'?'Сырая запись с телефона':'После ИИ-обработки';
+    const apply=()=>{if(isFinite(to.duration))to.currentTime=ratio*to.duration;if(was){to.play();setIcons(true)}tick()};
+    if(isFinite(to.duration)&&to.duration>0)apply();else to.addEventListener('loadedmetadata',apply,{once:true});
+    swB.classList.toggle('on',m==='before');swA.classList.toggle('on',m==='after');
+    ab.classList.toggle('after',m==='after');
+    state.textContent=m==='before'?'📱 Сырая запись с телефона':'🎧 После обработки — как со студии';
   }
   swB.addEventListener('click',()=>switchTo('before'));
   swA.addEventListener('click',()=>switchTo('after'));
