@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Замер задержки записи</title>
+<meta name="description" content="Узнай, на сколько миллисекунд опаздывает запись вокала через телефон, и как это исправить в Ableton." />
+<link rel="icon" href="../favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+<style>
+/* Один столбец-инструкция: шаги → бросить файл → результат с осциллограммой. Цвета — как на основном сайте. */
+:root{
+  --bg:#0e1621; --panel:#17212b; --panel2:#1e2c3a; --line:#253545;
+  --text:#eef2f6; --muted:#8b9cad; --tg:#2aabee; --rec:#5ed36a; --warn:#ffb648; --hot:#ff5a5f;
+  --display:"Inter Tight", "Inter", system-ui, sans-serif;
+  --body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --r:18px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text)}
+body{font:16px/1.55 var(--body);padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px));padding-block:40px 64px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+h1,h2{font-family:var(--display);letter-spacing:-.01em;text-wrap:balance;margin:0}
+h1{font-size:clamp(30px,6vw,44px);line-height:1.05;font-weight:800}
+h2{font-size:22px;font-weight:700}
+p{margin:0}
+.lead{color:var(--muted);max-width:62ch}
+a{color:var(--tg)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:16px}
+ol.steps{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px;counter-reset:s}
+ol.steps li{display:grid;grid-template-columns:32px 1fr;gap:12px;counter-increment:s}
+ol.steps li::before{content:counter(s);width:32px;height:32px;border-radius:50%;background:var(--panel2);color:var(--tg);font:700 15px/32px var(--display);text-align:center}
+ol.steps b{font-weight:600}
+.k{font-family:var(--mono);font-size:.86em;background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:1px 6px;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--tg);color:#fff;border:0;border-radius:12px;padding:11px 18px;font:600 15px var(--body);cursor:pointer;text-decoration:none;width:fit-content}
+.btn.ghost{background:transparent;color:var(--tg);border:1px solid var(--line)}
+.btn:focus-visible,.drop:focus-visible{outline:2px solid var(--tg);outline-offset:3px}
+.drop{border:2px dashed var(--line);border-radius:var(--r);padding:34px 20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;transition:border-color .15s,background .15s}
+.drop.over{border-color:var(--tg);background:rgba(42,171,238,.06)}
+.drop .big{font:700 20px var(--display)}
+.drop small{color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+#result[hidden]{display:none}
+.tag{font:600 12px var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tag.demo{color:var(--warn)}
+.num{font:800 clamp(48px,12vw,76px)/1 var(--display);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.num small{font-size:.4em;font-weight:700;color:var(--muted);margin-left:6px}
+.verdict{font-size:18px}
+.pill{display:inline-block;border-radius:999px;padding:3px 10px;font:600 13px var(--body)}
+.pill.ok{background:rgba(94,211,106,.14);color:var(--rec)}
+.pill.warn{background:rgba(255,182,72,.14);color:var(--warn)}
+.pill.bad{background:rgba(255,90,95,.14);color:var(--hot)}
+canvas{width:100%;height:auto;display:block;border-radius:12px;background:var(--bg);border:1px solid var(--line)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+.legend i{display:inline-block;width:12px;height:3px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.fix{display:flex;flex-direction:column;gap:12px}
+.fix h3{margin:0;font:700 17px var(--display)}
+.note{color:var(--muted);font-size:14px}
+.alert{border-left:3px solid var(--warn);padding:10px 14px;background:rgba(255,182,72,.07);border-radius:0 10px 10px 0}
+.alert.bad{border-color:var(--hot);background:rgba(255,90,95,.07)}
+.copy{font-family:var(--mono);font-size:15px;background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:4px 10px;cursor:pointer}
+details{border-top:1px solid var(--line);padding-top:14px}
+summary{cursor:pointer;font-weight:600}
+details p{margin-top:10px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header style="display:flex;flex-direction:column;gap:12px">
+    <a href="/" style="font-size:14px;color:var(--muted);text-decoration:none">← vtrendemusic.info</a>
+    <h1>Замер задержки записи</h1>
+    <p class="lead">Когда пишешь вокал через телефон, голос ложится в проект позже бита. Здесь за 2 минуты узнаешь, на сколько миллисекунд, и что вписать в Ableton, чтобы попадать в долю.</p>
+  </header>
+
+  <section class="card" aria-labelledby="h-steps">
+    <h2 id="h-steps">Как замерить</h2>
+    <ol class="steps">
+      <li><div><b>Скачай клик</b> и перетащи его на новую аудиодорожку, в самое начало проекта. Щелчки в нём только в левом канале, так и задумано.<div class="row" style="margin-top:10px"><a class="btn" href="vtrende-click.wav" download>Скачать клик (WAV, 14 с)</a></div></div></li>
+      <li><div>На дорожке, куда пишешь голос с телефона, <b>поверни панораму вправо до упора</b> <span class="k">50R</span>, а мониторинг поставь <span class="k">Off</span>.</div></li>
+      <li><div><b>Сними наушники.</b> Громкость ноутбука или колонок на 70–100%. Положи телефон микрофоном к динамику, в 10–20 см. В комнате тихо.</div></li>
+      <li><div><b>Запиши</b> голосовую дорожку с начала проекта, пока проигрываются все 12 щелчков.</div></li>
+      <li><div><b>Экспортируй</b> этот кусок в WAV: <span class="k">File → Export Audio/Video</span> (<span class="k">⌘⇧R</span> / <span class="k">Ctrl+Shift+R</span>), Rendered Track: <span class="k">Main</span>. В экспорт должны попасть и клик, и запись.</div></li>
+      <li><div><b>Перетащи WAV</b> в окно ниже. Файл никуда не загружается, всё считается у тебя в браузере.</div></li>
+    </ol>
+  </section>
+
+  <section class="drop" id="drop" tabindex="0" role="button" aria-label="Выбрать WAV-файл">
+    <div class="big">Перетащи сюда экспорт</div>
+    <small>WAV, стерео: слева клик, справа запись с телефона</small>
+    <div class="row" style="justify-content:center">
+      <span class="btn">Выбрать файл</span>
+      <button class="btn ghost" id="demo" type="button">Показать пример</button>
+    </div>
+    <input type="file" id="file" accept="audio/*,.wav,.aif,.aiff" hidden />
+  </section>
+
+  <section class="card" id="result" hidden aria-live="polite">
+    <div class="tag" id="r-tag">Результат</div>
+    <div class="num" id="r-num">—</div>
+    <p class="verdict" id="r-verdict"></p>
+    <div id="r-alerts" class="fix"></div>
+    <canvas id="wave" width="1400" height="420" aria-label="Осциллограмма: клик и запись"></canvas>
+    <div class="legend"><span><i style="background:var(--tg)"></i>клик из проекта</span><span><i style="background:var(--rec)"></i>что записал телефон</span></div>
+    <div id="r-fix" class="fix"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-faq">
+    <h2 id="h-faq">Вопросы</h2>
+    <details><summary>Почему не метроном?</summary><p>Метроном не попадает в экспорт, и при записи его почти не слышно. Клик-файл играет из проекта, телефон его слышит, и в одном экспорте оказываются оба: оригинал слева, запись справа. Страница сравнивает их по каждому щелчку.</p></details>
+    <details><summary>Нужно ли замерять каждый раз?</summary><p>Нет. Один раз для своей связки: телефон, способ подключения, звуковые настройки. Поменял кабель на Wi‑Fi, буфер или приложение — замерь заново.</p></details>
+    <details><summary>Что значит «разброс»?</summary><p>Насколько отличается задержка между щелчками. До ±3 мс — норма. Больше ±10 мс — задержка «плавает», её не исправить одним числом. Чаще всего помогает подключение телефона кабелем вместо Wi‑Fi.</p></details>
+    <details><summary>А если у меня FL Studio или другая программа?</summary><p>Замер работает в любой программе: клик в начало, запись панорамой вправо, экспорт. Исправление — сдвинуть записанный вокал раньше на полученное число миллисекунд или вписать его в настройку смещения записи (recording offset) своей программы.</p></details>
+  </section>
+</main>
+
+<script>
+const $ = s => document.querySelector(s);
+const drop = $('#drop'), fileIn = $('#file');
+let lastLat = null;
+
+drop.addEventListener('click', e => { if (e.target.id !== 'demo') fileIn.click(); });
+drop.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileIn.click(); } });
+['dragenter','dragover'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.add('over'); }));
+['dragleave','drop'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.remove('over'); }));
+drop.addEventListener('drop', e => { const f = e.dataTransfer.files[0]; if (f) load(f); });
+fileIn.addEventListener('change', () => { if (fileIn.files[0]) load(fileIn.files[0]); fileIn.value = ''; });
+$('#demo').addEventListener('click', e => { e.stopPropagation(); show(analyze(makeDemo()), true); });
+
+async function load(f) {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const buf = await ctx.decodeAudioData(await f.arrayBuffer());
+    ctx.close && ctx.close();
+    show(analyze({ sr: buf.sampleRate, ch: [...Array(buf.numberOfChannels)].map((_, i) => buf.getChannelData(i)) }), false, f.name);
+  } catch (err) {
+    showError(err.userText || 'Не получилось открыть файл. Нужен WAV или AIFF из экспорта программы.');
+  }
+}
+
+function fail(text) { const e = new Error(text); e.userText = text; throw e; }
+
+// ---------- анализ ----------
+function analyze({ sr, ch }) {
+  if (ch.length < 2) fail('Файл моно. Экспортируй в стерео: клик должен быть слева, запись справа.');
+  const L = ch[0], R = ch[1], n = L.length;
+
+  let peakL = 0; for (let i = 0; i < n; i++) { const a = Math.abs(L[i]); if (a > peakL) peakL = a; }
+  if (peakL < 0.01) fail('В левом канале тишина: клик не попал в экспорт. Проверь, что дорожка с кликом включена.');
+
+  // щелчки в левом канале
+  const thrL = peakL * 0.3, gap = Math.round(sr * 0.4), onsets = [];
+  for (let i = 0; i < n; i++) if (Math.abs(L[i]) > thrL) { onsets.push(i); i += gap; }
+  if (onsets.length < 4) fail('Нашлось слишком мало щелчков. Экспортируй весь кусок с 12 щелчками.');
+
+  // запись: подчёркиваем резкие атаки (первая разность), огибающая = RMS в окне ±0.25 мс
+  const sq = new Float64Array(n + 1);
+  for (let i = 1; i < n; i++) { const d = R[i] - R[i - 1]; sq[i + 1] = sq[i] + d * d; }
+  const h = Math.max(2, Math.round(sr * 0.00025)), env = new Float32Array(n);
+  for (let i = 0; i < n; i++) { const a = Math.max(0, i - h), b = Math.min(n, i + h + 1); env[i] = Math.sqrt((sq[b] - sq[a]) / (b - a)); }
+  let peakR = 0; for (let i = 0; i < n; i++) if (env[i] > peakR) peakR = env[i];
+  if (peakR < 1e-4) fail('В правом канале тишина. Поверни дорожку с записью вправо до упора и проверь, что запись есть.');
+
+  // не утекла ли запись в левый канал (панорама не до упора)
+  let leak = false;
+  for (const o of onsets) {
+    let m = 0;
+    for (let i = o + Math.round(sr * 0.03); i < Math.min(n, o + Math.round(sr * 0.7)); i++) { const a = Math.abs(L[i]); if (a > m) m = a; }
+    if (m > peakL * 0.12) { leak = true; break; }
+  }
+
+  const pre = Math.round(sr * 0.3), post = Math.round(sr * 0.7), clicks = [];
+  for (const o of onsets) {
+    const a = Math.max(1, o - pre), b = Math.min(n, o + post);
+    let P = 0, pos = a;
+    for (let i = a; i < b; i++) if (env[i] > P) { P = env[i]; pos = i; }
+    const sorted = Array.from(env.subarray(a, b)).sort((x, y) => x - y);
+    const noise = sorted[Math.floor(sorted.length * 0.9)] + 1e-9;
+    if (P < noise * 4) { clicks.push({ o, ok: false }); continue; }
+    // от пика назад, пока огибающая выше порога: так находим начало атаки, а не случайный всплеск шума
+    const thr = noise + 0.2 * (P - noise);
+    let on = pos;
+    while (on > a && env[on - 1] > thr) on--;
+    clicks.push({ o, r: on, ok: true, lat: (on - o) / sr * 1000, snr: P / noise });
+  }
+
+  const good = clicks.filter(c => c.ok);
+  if (good.length < 4) fail('Телефон почти не услышал щелчки. Сделай громче и положи телефон ближе к динамику.');
+  const med = median(good.map(c => c.lat));
+  const kept = good.filter(c => Math.abs(c.lat - med) <= 8);
+  const lats = kept.map(c => c.lat);
+  const lat = median(lats);
+  const spread = (Math.max(...lats) - Math.min(...lats)) / 2;
+  const all = good.map(c => c.lat);
+  const allSpread = (Math.max(...all) - Math.min(...all)) / 2;
+  return { sr, L, R, clicks, lat, spread, allSpread, heard: good.length, total: clicks.length, kept: kept.length, leak };
+}
+
+function median(a) { const s = [...a].sort((x, y) => x - y), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; }
+
+// ---------- вывод ----------
+function show(res, demo, name) {
+  const el = $('#result'); el.hidden = false;
+  $('#r-tag').textContent = demo ? 'Пример (не твои данные)' : 'Результат' + (name ? ' · ' + name : '');
+  $('#r-tag').className = 'tag' + (demo ? ' demo' : '');
+  const L = Math.round(res.lat), ms = Math.abs(L);
+  $('#r-num').innerHTML = (L > 0 ? '+' : L < 0 ? '−' : '') + ms + '<small>мс</small>';
+
+  const sp = res.allSpread;
+  const stab = sp <= 3 ? '<span class="pill ok">стабильно ±' + sp.toFixed(1) + ' мс</span>'
+             : sp <= 10 ? '<span class="pill warn">небольшой разброс ±' + sp.toFixed(1) + ' мс</span>'
+             : '<span class="pill bad">плавает ±' + sp.toFixed(0) + ' мс</span>';
+  $('#r-verdict').innerHTML = (Math.abs(res.lat) < 2 ? 'Запись попадает ровно.'
+    : res.lat > 0 ? 'Запись опаздывает на ' + ms + ' мс.' : 'Запись спешит на ' + ms + ' мс.')
+    + ' ' + stab + ' <span class="note">· услышано щелчков: ' + res.heard + ' из ' + res.total + '</span>';
+
+  const alerts = [];
+  if (res.leak) alerts.push(['bad', 'Запись слышна и в левом канале. Поверни дорожку с голосом вправо до упора (50R) и экспортируй заново, иначе цифра может быть неверной.']);
+  if (sp > 10) alerts.push(['bad', 'Задержка плавает между щелчками. Одним числом её не исправить. Подключи телефон кабелем вместо Wi‑Fi, закрой лишние программы и повтори замер.']);
+  if (res.heard < res.total * 0.75) alerts.push(['', 'Часть щелчков телефон не услышал. Для точности сделай громче или поднеси телефон ближе.']);
+  $('#r-alerts').innerHTML = alerts.map(([c, t]) => '<div class="alert ' + c + '">' + t + '</div>').join('');
+
+  lastLat = L;
+  const fix = $('#r-fix');
+  if (Math.abs(res.lat) < 2) {
+    fix.innerHTML = '<h3>Ничего делать не нужно</h3><p class="note">Расхождение меньше 2 мс, на слух его нет.</p>';
+  } else {
+    fix.innerHTML =
+      '<h3>Как исправить в Ableton</h3>' +
+      '<ol class="steps">' +
+      '<li><div>Открой <span class="k">Settings → Audio</span> (<span class="k">⌘,</span> / <span class="k">Ctrl+,</span>) и в поле <b>Driver Error Compensation</b> впиши <button class="copy" id="cp">' + L + '</button> мс.</div></li>' +
+      '<li><div>Пиши вокал с мониторингом <span class="k">Off</span>: только в этом режиме Ableton применяет поправку.</div></li>' +
+      '<li><div><b>Проверь:</b> повтори замер. Должно выйти около 0 (±3 мс). Если вышло примерно ' + (2 * L) + ' мс, впиши ' + (-L) + ' вместо ' + L + '.</div></li>' +
+      '</ol>' +
+      '<p class="note">Другой способ, если пишешь с мониторингом In/Auto: включи у дорожки с голосом Track Delay и поставь ' + (-L) + ' мс. Он действует только в этом проекте, поэтому удобно сохранить его в шаблон.</p>';
+    const cp = $('#cp');
+    cp.addEventListener('click', () => { navigator.clipboard && navigator.clipboard.writeText(String(L)).then(() => { cp.textContent = 'скопировано'; setTimeout(() => cp.textContent = L, 1200); }).catch(() => {}); });
+  }
+  draw(res);
+  el.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+}
+
+function showError(text) {
+  const el = $('#result'); el.hidden = false;
+  $('#r-tag').textContent = 'Не получилось'; $('#r-tag').className = 'tag';
+  $('#r-num').textContent = '—';
+  $('#r-verdict').textContent = '';
+  $('#r-alerts').innerHTML = '<div class="alert bad">' + text + '</div>';
+  $('#r-fix').innerHTML = '';
+  const c = $('#wave'); c.getContext('2d').clearRect(0, 0, c.width, c.height);
+}
+
+// осциллограмма самого чистого щелчка: клик сверху, запись снизу
+function draw(res) {
+  const c = $('#wave'), g = c.getContext('2d'), W = c.width, H = c.height;
+  const css = getComputedStyle(document.documentElement);
+  const col = k => css.getPropertyValue(k).trim();
+  g.clearRect(0, 0, W, H);
+  const best = res.clicks.filter(k => k.ok).sort((a, b) => b.snr - a.snr)[0];
+  if (!best) return;
+  const sr = res.sr, latS = best.r - best.o;
+  const from = best.o + Math.min(0, latS) - Math.round(sr * 0.02);
+  const to = best.o + Math.max(0, latS) + Math.round(sr * 0.05);
+  const span = to - from, padL = 20, padR = 20, laneH = (H - 90) / 2;
+  const x = i => padL + (i - from) / span * (W - padL - padR);
+
+  function lane(sig, y0, color) {
+    let m = 1e-9; for (let i = from; i < to; i++) m = Math.max(m, Math.abs(sig[i] || 0));
+    g.strokeStyle = col('--line'); g.lineWidth = 1;
+    g.beginPath(); g.moveTo(padL, y0); g.lineTo(W - padR, y0); g.stroke();
+    g.strokeStyle = color; g.lineWidth = 2; g.beginPath();
+    const step = Math.max(1, Math.floor(span / (W * 2)));
+    for (let i = from; i < to; i += step) {
+      let lo = 0, hi = 0;
+      for (let j = i; j < i + step && j < to; j++) { const v = sig[j] || 0; if (v < lo) lo = v; if (v > hi) hi = v; }
+      g.moveTo(x(i), y0 - hi / m * laneH * 0.45); g.lineTo(x(i), y0 - lo / m * laneH * 0.45);
+    }
+    g.stroke();
+  }
+  const y1 = 20 + laneH / 2, y2 = 40 + laneH * 1.5;
+  lane(res.L, y1, col('--tg'));
+  lane(res.R, y2, col('--rec'));
+
+  // метки начала и стрелка задержки
+  g.setLineDash([6, 6]); g.strokeStyle = col('--muted'); g.lineWidth = 1.5;
+  [[best.o, y1], [best.r, y2]].forEach(([i]) => { g.beginPath(); g.moveTo(x(i), 10); g.lineTo(x(i), H - 50); g.stroke(); });
+  g.setLineDash([]);
+  const ya = H - 30, xa = x(best.o), xb = x(best.r);
+  g.strokeStyle = col('--text'); g.fillStyle = col('--text'); g.lineWidth = 2;
+  g.beginPath(); g.moveTo(xa, ya); g.lineTo(xb, ya); g.stroke();
+  const dir = Math.sign(xb - xa) || 1;
+  g.beginPath(); g.moveTo(xb, ya); g.lineTo(xb - dir * 12, ya - 7); g.lineTo(xb - dir * 12, ya + 7); g.closePath(); g.fill();
+  g.font = '600 26px Inter, system-ui, sans-serif'; g.textBaseline = 'bottom';
+  const label = Math.round(best.lat) + ' мс';
+  const tw = g.measureText(label).width;
+  g.fillText(label, Math.min(Math.max((xa + xb) / 2 - tw / 2, padL), W - padR - tw), ya - 8);
+}
+
+// пример: запись = клик, приглушённый «динамиком», с задержкой ~137 мс, лёгким дрожанием и шумом
+function makeDemo() {
+  const sr = 48000, n = sr * 14, L = new Float32Array(n), R = new Float32Array(n);
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let k = 0; k < 12; k++) {
+    const s = sr * (1 + k);
+    for (let i = 0; i < sr * 0.012; i++) {
+      const t = i / sr, e = Math.exp(-t / 0.003);
+      L[s + i] = 0.9 * e * (0.6 * Math.sin(2 * Math.PI * 2500 * t) + 0.35 * Math.sin(2 * Math.PI * 1200 * t));
+    }
+    const d = s + Math.round(sr * (0.137 + (rnd() - 0.5) * 0.002));
+    let y = 0;
+    for (let i = 0; i < sr * 0.06; i++) { y += 0.35 * ((L[s + i] || 0) - y); R[d + i] += 0.5 * y + (i > 200 ? 0.15 * (L[s + i - 200] || 0) : 0); }
+  }
+  for (let i = 0; i < n; i++) R[i] += (rnd() - 0.5) * 0.004;
+  return { sr, ch: [L, R] };
+}
+</script>
+</body>
+</html>
