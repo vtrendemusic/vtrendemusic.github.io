@@ -128,6 +128,12 @@ img,video{display:block;max-width:100%}
 .ab-bar-inner{height:4px;width:100%;background:var(--line);border-radius:2px;overflow:hidden}
 .ab-fill{height:100%;width:0;background:var(--tg)}
 .ab-time{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ab-note{margin-top:10px;font-size:13.5px;line-height:1.45;color:#c9d4de}
+.ab-note b{color:#fff}
+.plug{margin-top:22px;background:linear-gradient(135deg,rgba(42,171,238,.16),rgba(42,171,238,.04));border:1px solid rgba(42,171,238,.45);border-radius:var(--r);padding:18px 18px 20px}
+.plug-tag{display:inline-block;font:700 11.5px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--tg)}
+.plug-h{font:800 clamp(21px,5.2vw,28px)/1.15 "Inter Tight",sans-serif;letter-spacing:-.01em;margin-top:8px;text-wrap:balance}
+.plug p{margin-top:10px;color:#c9d4de;font-size:15px;line-height:1.55}
 
 /* рифмовник */
 .rif{display:grid;gap:22px;align-items:center;margin-top:22px}
@@ -315,10 +321,52 @@ html:not(.js) .rv{opacity:1;transform:none}
     <div class="pain rv">Нет студии, микрофона и звуковой карты?</div>
     <p class="solve rv">За <b>1 час</b> научишься записывать треки <b>на телефон</b> и обрабатывать их с помощью новых технологий, чтобы они звучали <b>как со студии</b>. Не веришь? Послушай сам:</p>
 
+    <div class="plug rv">
+      <span class="plug-tag">Новое · только у нас</span>
+      <h3 class="plug-h">Мы сделали свой ИИ‑плагин, который сводит трек за&nbsp;30&nbsp;секунд</h3>
+      <p>Даже если записал на обычный диктофон телефона. Закинул запись в плагин, и через 30 секунд трек звучит как со студии. Первые два примера ниже сведены именно так.</p>
+    </div>
+
     <div class="ab-grid">
-      <div class="ab rv" data-before="./1.mp3" data-after="./2.mp3">
+      <div class="ab rv" data-before="./5.mp3" data-after="./6.mp3" data-label-before="📱 Диктофон iPhone, без обработки" data-label-after="🤖 Наш ИИ‑плагин · 30 секунд">
         <div class="ab-top">
           <h3>Трек 01</h3>
+          <div class="switch"><button class="sw-before on" type="button">ДО</button><button class="sw-after" type="button">ПОСЛЕ</button></div>
+        </div>
+        <div class="ab-note">Записан на <b>диктофон айфона</b> и сведён <b>за 30 секунд</b> нашим плагином</div>
+        <div class="ab-body">
+          <button class="ab-play" type="button" aria-label="Воспроизвести">
+            <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="i-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+          </button>
+          <div class="ab-mid">
+            <div class="ab-state">📱 Диктофон iPhone, без обработки</div>
+            <div class="ab-bar"><div class="ab-bar-inner"><div class="ab-fill"></div></div></div>
+          </div>
+          <div class="ab-time">0:00</div>
+        </div>
+      </div>
+      <div class="ab rv" data-before="./7.mp3" data-after="./8.mp3" data-label-before="📱 Диктофон iPhone, без обработки" data-label-after="🤖 Наш ИИ‑плагин · 30 секунд">
+        <div class="ab-top">
+          <h3>Трек 02</h3>
+          <div class="switch"><button class="sw-before on" type="button">ДО</button><button class="sw-after" type="button">ПОСЛЕ</button></div>
+        </div>
+        <div class="ab-note">Записан на <b>диктофон айфона</b> и сведён <b>за 30 секунд</b> нашим плагином</div>
+        <div class="ab-body">
+          <button class="ab-play" type="button" aria-label="Воспроизвести">
+            <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="i-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+          </button>
+          <div class="ab-mid">
+            <div class="ab-state">📱 Диктофон iPhone, без обработки</div>
+            <div class="ab-bar"><div class="ab-bar-inner"><div class="ab-fill"></div></div></div>
+          </div>
+          <div class="ab-time">0:00</div>
+        </div>
+      </div>
+      <div class="ab rv" data-before="./1.mp3" data-after="./2.mp3">
+        <div class="ab-top">
+          <h3>Трек 03</h3>
           <div class="switch"><button class="sw-before on" type="button">ДО</button><button class="sw-after" type="button">ПОСЛЕ</button></div>
         </div>
         <div class="ab-body">
@@ -335,7 +383,7 @@ html:not(.js) .rv{opacity:1;transform:none}
       </div>
       <div class="ab rv" data-before="./4.mp3" data-after="./3.mp3">
         <div class="ab-top">
-          <h3>Трек 02</h3>
+          <h3>Трек 04</h3>
           <div class="switch"><button class="sw-before on" type="button">ДО</button><button class="sw-after" type="button">ПОСЛЕ</button></div>
         </div>
         <div class="ab-body">
@@ -556,7 +604,7 @@ document.querySelectorAll('.ab').forEach(ab=>{
     if(isFinite(to.duration)&&to.duration>0)apply();else to.addEventListener('loadedmetadata',apply,{once:true});
     swB.classList.toggle('on',m==='before');swA.classList.toggle('on',m==='after');
     ab.classList.toggle('after',m==='after');
-    state.textContent=m==='before'?'📱 Сырая запись с телефона':'🎧 После обработки — как со студии';
+    state.textContent=m==='before'?(ab.dataset.labelBefore||'📱 Сырая запись с телефона'):(ab.dataset.labelAfter||'🎧 После обработки — как со студии');
   }
   swB.addEventListener('click',()=>switchTo('before'));
   swA.addEventListener('click',()=>switchTo('after'));
