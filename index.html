@@ -324,7 +324,7 @@ html:not(.js) .rv{opacity:1;transform:none}
     <div class="plug rv">
       <span class="plug-tag">Новое · только у нас</span>
       <h3 class="plug-h">Мы сделали свой ИИ‑плагин, который сводит трек за&nbsp;30&nbsp;секунд</h3>
-      <p>Даже если записал на обычный диктофон телефона. Закинул запись в плагин, и через 30 секунд трек звучит как со студии. Первые два примера ниже сведены именно так.</p>
+      <p>Даже если записал на обычный диктофон телефона. Закинул запись в плагин, и через 30 секунд трек звучит как со студии. Все примеры ниже сведены именно так.</p>
     </div>
 
     <div class="ab-grid">
@@ -364,35 +364,37 @@ html:not(.js) .rv{opacity:1;transform:none}
           <div class="ab-time">0:00</div>
         </div>
       </div>
-      <div class="ab rv" data-before="./1.mp3" data-after="./2.mp3">
+      <div class="ab rv" data-before="./1.mp3" data-after="./2.mp3" data-label-before="📱 Диктофон iPhone, без обработки" data-label-after="🤖 Наш ИИ‑плагин · 30 секунд">
         <div class="ab-top">
           <h3>Трек 03</h3>
           <div class="switch"><button class="sw-before on" type="button">ДО</button><button class="sw-after" type="button">ПОСЛЕ</button></div>
         </div>
+        <div class="ab-note">Записан на <b>диктофон айфона</b> и сведён <b>за 30 секунд</b> нашим плагином</div>
         <div class="ab-body">
           <button class="ab-play" type="button" aria-label="Воспроизвести">
             <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             <svg class="i-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
           </button>
           <div class="ab-mid">
-            <div class="ab-state">📱 Сырая запись с телефона</div>
+            <div class="ab-state">📱 Диктофон iPhone, без обработки</div>
             <div class="ab-bar"><div class="ab-bar-inner"><div class="ab-fill"></div></div></div>
           </div>
           <div class="ab-time">0:00</div>
         </div>
       </div>
-      <div class="ab rv" data-before="./4.mp3" data-after="./3.mp3">
+      <div class="ab rv" data-before="./4.mp3" data-after="./3.mp3" data-label-before="📱 Диктофон iPhone, без обработки" data-label-after="🤖 Наш ИИ‑плагин · 30 секунд">
         <div class="ab-top">
           <h3>Трек 04</h3>
           <div class="switch"><button class="sw-before on" type="button">ДО</button><button class="sw-after" type="button">ПОСЛЕ</button></div>
         </div>
+        <div class="ab-note">Записан на <b>диктофон айфона</b> и сведён <b>за 30 секунд</b> нашим плагином</div>
         <div class="ab-body">
           <button class="ab-play" type="button" aria-label="Воспроизвести">
             <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             <svg class="i-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
           </button>
           <div class="ab-mid">
-            <div class="ab-state">📱 Сырая запись с телефона</div>
+            <div class="ab-state">📱 Диктофон iPhone, без обработки</div>
             <div class="ab-bar"><div class="ab-bar-inner"><div class="ab-fill"></div></div></div>
           </div>
           <div class="ab-time">0:00</div>
@@ -592,16 +594,30 @@ document.querySelectorAll('.ab').forEach(ab=>{
   });
   playBtn.addEventListener('click',()=>{
     const c=cur();
-    if(c.paused){units.forEach(u=>{if(u!==unit)u.pauseAll()});c.play();setIcons(true)}
+    if(c.paused){
+      units.forEach(u=>{if(u!==unit)u.pauseAll()});c.play();setIcons(true);
+      // заранее подгружаем вторую версию, чтобы переключение было мгновенным (особенно на iPhone)
+      const o=c===a.before?a.after:a.before;if(o.readyState===0){o.preload='auto';o.load()}
+    }
     else{c.pause();setIcons(false)}
   });
   bar.addEventListener('click',e=>{const r=bar.getBoundingClientRect(),c=cur();if(isFinite(c.duration)){c.currentTime=(e.clientX-r.left)/r.width*c.duration;tick()}});
   function switchTo(m){
     if(m===mode)return;
-    const from=cur(),was=!from.paused,ratio=from.duration?from.currentTime/from.duration:0;
+    const from=cur(),was=!from.paused,pos=from.currentTime,ratio=from.duration?pos/from.duration:0;
     from.pause();mode=m;const to=cur();
-    const apply=()=>{if(isFinite(to.duration))to.currentTime=ratio*to.duration;if(was){to.play();setIcons(true)}tick()};
-    if(isFinite(to.duration)&&to.duration>0)apply();else to.addEventListener('loadedmetadata',apply,{once:true});
+    // та же секунда, что играла; если длины файлов разные — та же доля трека
+    const target=()=>isFinite(to.duration)&&isFinite(from.duration)&&Math.abs(to.duration-from.duration)>0.5?ratio*to.duration:pos;
+    const seek=()=>{try{to.currentTime=target()}catch(e){}tick()};
+    if(to.readyState>=1)seek();else{to.addEventListener('loadedmetadata',seek,{once:true});if(to.readyState===0)to.load()}
+    // play() вызываем сразу в обработчике нажатия — иначе Safari его блокирует
+    if(was){
+      setIcons(true);
+      const p=to.play();
+      const fix=()=>{if(Math.abs(to.currentTime-target())>0.3)seek()};
+      to.addEventListener('playing',fix,{once:true});
+      if(p&&p.catch)p.catch(()=>setIcons(false));
+    }
     swB.classList.toggle('on',m==='before');swA.classList.toggle('on',m==='after');
     ab.classList.toggle('after',m==='after');
     state.textContent=m==='before'?(ab.dataset.labelBefore||'📱 Сырая запись с телефона'):(ab.dataset.labelAfter||'🎧 После обработки — как со студии');
