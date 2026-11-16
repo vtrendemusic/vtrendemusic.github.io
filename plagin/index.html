@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>SVODILA — плагин для сведения треков</title>
+<meta name="description" content="Треки записаны на телефон с ужасным качеством и сведены полностью нашим ИИ‑плагином за 30 секунд. Послушай ДО и ПОСЛЕ." />
+<link rel="canonical" href="https://vtrendemusic.info/plagin/" />
+<meta property="og:title" content="SVODILA — сводит трек за 30 секунд" />
+<meta property="og:description" content="Записано на телефон → сведено нашим ИИ‑плагином. Послушай ДО и ПОСЛЕ." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://vtrendemusic.info/plagin/" />
+<meta property="og:image" content="https://vtrendemusic.info/og-super.png" />
+<link rel="icon" type="image/png" sizes="64x64" href="../favicon.png" />
+<link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+/* Как основной сайт: тёмный Telegram. Герой → панель плагина → примеры ДО/ПОСЛЕ → кнопка. */
+:root{
+  --bg:#0e1621; --panel:#17212b; --panel2:#1e2c3a; --line:#253545;
+  --text:#eef2f6; --muted:#8b9cad; --tg:#2aabee; --tg2:#229ed9; --link:#6ab3f3;
+  --money:#5ed36a; --hot:#ff5a5f; --r:18px;
+  --dev:#0a0f15; --dev2:#121a23; --led:#2aabee;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;overflow-x:hidden;overflow-x:clip}
+body{background:var(--bg);color:var(--text);font:16px/1.55 Inter,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.display{font-family:"Inter Tight",Inter,sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.05;text-wrap:balance}
+
+.top{position:sticky;top:0;z-index:30;background:rgba(14,22,33,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:12px;height:60px}
+.ava{width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center;background:linear-gradient(135deg,#2aabee,#1c6fb8);font:800 17px "Inter Tight",sans-serif;color:#fff}
+.chan{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+.chan b{font-weight:700;font-size:15px;white-space:nowrap}
+.chan span{font-size:12.5px;color:var(--muted);white-space:nowrap}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--tg);color:#fff;font-weight:700;border-radius:999px;padding:11px 18px;font-size:15px;transition:transform .15s,background .15s}
+.btn:hover{background:var(--tg2)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:18px;height:18px}
+.btn.big{padding:18px 28px;font-size:18px;width:100%;max-width:420px}
+.top .btn{margin-left:auto}
+@media(max-width:420px){.top .btn{padding:9px 14px;font-size:14px}.top .btn svg{display:none}}
+
+section{padding:44px 0}
+.hero{padding-top:40px;text-align:center}
+.eyebrow{display:inline-block;font:700 12px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--tg);background:rgba(42,171,238,.1);border:1px solid rgba(42,171,238,.35);border-radius:999px;padding:6px 12px}
+.hero h1{font-size:clamp(34px,8vw,64px);margin:16px auto 0;max-width:15ch}
+.hero h1 em{font-style:normal;color:var(--tg)}
+.hero .sub{margin:16px auto 0;max-width:58ch;color:#c9d4de;font-size:clamp(16px,2.4vw,19px)}
+.hero .sub b{color:#fff}
+.facts{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}
+.facts span{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14.5px}
+.facts b{color:var(--tg)}
+
+/* ---------- панель плагина ---------- */
+.shot{display:block;max-width:1000px;margin:0 auto;border-radius:16px;overflow:hidden;border:1px solid #2a3a4a;box-shadow:0 40px 100px rgba(42,171,238,.18)}
+.shot img{display:block;width:100%;height:auto}
+.dev-cap .m{display:none}
+@media(max-width:700px){.dev-cap .m{display:inline}}
+.dev-cap{text-align:center;color:var(--muted);font-size:14px;margin-top:14px}
+
+/* ---------- до / после ---------- */
+.h2{font-size:clamp(28px,5.4vw,42px)}
+.lead{color:#c9d4de;margin-top:10px;max-width:62ch}
+.ab-grid{display:grid;gap:12px;margin-top:22px}
+@media(min-width:760px){.ab-grid{grid-template-columns:1fr 1fr}}
+.ab{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.ab-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ab-top h3{font-size:15px}
+.switch{display:flex;background:var(--bg);border-radius:999px;padding:3px}
+.switch button{border:0;background:none;color:var(--muted);font:700 12.5px Inter,sans-serif;padding:8px 13px;border-radius:999px;cursor:pointer}
+.switch button.on{background:var(--panel2);color:#fff}
+.switch .sw-after.on{background:var(--tg);color:#fff}
+.ab-note{margin-top:10px;font-size:13.5px;line-height:1.45;color:#c9d4de}
+.ab-note b{color:#fff}
+.ab-body{display:flex;align-items:center;gap:14px;margin-top:14px}
+.ab-play{width:54px;height:54px;flex:none;border-radius:50%;border:0;background:#fff;display:grid;place-items:center;cursor:pointer}
+.ab-play svg{width:24px;height:24px;fill:#0e1621}
+.ab-mid{flex:1;min-width:0}
+.ab-state{font-size:13.5px;color:var(--muted)}
+.ab.after .ab-state{color:var(--link)}
+.ab-bar{height:22px;display:flex;align-items:center;cursor:pointer}
+.ab-bar-inner{height:4px;width:100%;background:var(--line);border-radius:2px;overflow:hidden}
+.ab-fill{height:100%;width:0;background:var(--tg)}
+.ab-time{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+.cta{text-align:center}
+.cta p{color:#c9d4de;margin:12px auto 22px;max-width:52ch}
+.back{display:inline-block;color:var(--muted);font-size:14px;margin-top:22px}
+footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--muted);font-size:13px;text-align:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.3 13.1l-4.8-1.5c-1-.3-1.1-1 .2-1.5L20.5 2.9c.9-.3 1.6.2 1.4 1.4z"/></symbol>
+  </svg>
+
+<header class="top">
+  <div class="wrap">
+    <a href="/" class="ava" aria-label="На главную">S</a>
+    <a href="/" class="chan"><b>СУПЕР ГАЙД</b><span>закрытый Telegram-канал</span></a>
+    <a class="btn" href="https://t.me/vtrendevip_bot?start=plagin"><svg><use href="#tg"/></svg>Сделать трек</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Наш плагин · SVODILA для Ableton Live 12</span>
+    <h1 class="display">ИИ‑плагин сводит трек <em>за&nbsp;30&nbsp;секунд</em></h1>
+    <p class="sub">Все треки ниже записаны <b>на мобильный телефон с ужасным качеством</b> и сведены <b>полностью нашим плагином</b>. Без студии, без звукаря, без ручной настройки.</p>
+    <div class="facts"><span>📱 Запись: <b>телефон</b></span><span>⏱ Сведение: <b>30 секунд</b></span><span>🎛 Всё в <b>одной панели</b></span></div>
+  </div>
+</section>
+
+<section style="padding-top:8px">
+  <div class="wrap">
+    <a class="shot" href="svodila-panel.jpg" target="_blank" rel="noopener" aria-label="Открыть панель SVODILA крупно">
+      <img src="svodila-panel.jpg" width="1760" height="1014" alt="Панель плагина SVODILA v1.01: вход, подготовка вокала, автотюн, EQ, обработка, эффекты, расширение, пространство, эхо" />
+    </a>
+    <p class="dev-cap">Панель SVODILA v1.01: вся обработка вокала в одном окне. <span class="m">Нажми на панель, чтобы открыть крупно.</span></p>
+  </div>
+</section>
+
+<section id="examples">
+  <div class="wrap">
+    <h2 class="display h2">Послушай ДО и ПОСЛЕ</h2>
+    <p class="lead">Нажми play, а потом переключай ДО / ПОСЛЕ прямо во время звучания: трек продолжит играть с того же места.</p>
+    <div class="ab-grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2 class="display h2">Хочешь так же?</h2>
+    <p>В гайде показываю, как записывать на телефон и сводить треки, чтобы они звучали как со студии.</p>
+    <a class="btn big" href="https://t.me/vtrendevip_bot?start=plagin"><svg><use href="#tg"/></svg>Сделать трек</a>
+    <div><a class="back" href="/">← На главную</a></div>
+  </div>
+</section>
+
+<footer><div class="wrap">VTRENDE · <a href="/">vtrendemusic.info</a></div></footer>
+
+<script>
+// ---------- примеры ----------
+const LB='📱 Телефон, без обработки', LA='🎛 SVODILA · 30 секунд';
+const TRACKS=[['../5.mp3?v=2','../6.mp3'],['../7.mp3','../8.mp3'],['../1.mp3','../2.mp3'],['../4.mp3','../3.mp3']];
+const grid=document.getElementById('grid');
+TRACKS.forEach(([b,a],i)=>grid.insertAdjacentHTML('beforeend',`
+  <div class="ab" data-before="${b}" data-after="${a}">
+    <div class="ab-top"><h3>Трек 0${i+1}</h3>
+      <div class="switch"><button class="sw-before on" type="button">ДО</button><button class="sw-after" type="button">ПОСЛЕ</button></div></div>
+    <div class="ab-note">Записан на <b>мобильный телефон</b> и сведён <b>полностью нашим плагином</b> за 30 секунд</div>
+    <div class="ab-body">
+      <button class="ab-play" type="button" aria-label="Воспроизвести">
+        <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="i-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button>
+      <div class="ab-mid"><div class="ab-state">${LB}</div>
+        <div class="ab-bar"><div class="ab-bar-inner"><div class="ab-fill"></div></div></div></div>
+      <div class="ab-time">0:00</div>
+    </div>
+  </div>`));
+
+const units=[];
+document.querySelectorAll('.ab').forEach(ab=>{
+  const a={before:new Audio(ab.dataset.before),after:new Audio(ab.dataset.after)};
+  a.before.preload='metadata';a.after.preload='metadata';
+  let mode='before';
+  const playBtn=ab.querySelector('.ab-play'),iPlay=ab.querySelector('.i-play'),iPause=ab.querySelector('.i-pause'),
+        fill=ab.querySelector('.ab-fill'),bar=ab.querySelector('.ab-bar'),time=ab.querySelector('.ab-time'),
+        state=ab.querySelector('.ab-state'),swB=ab.querySelector('.sw-before'),swA=ab.querySelector('.sw-after');
+  const cur=()=>a[mode];
+  const fmt=s=>isFinite(s)?Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'):'0:00';
+  const setIcons=p=>{iPlay.style.display=p?'none':'';iPause.style.display=p?'':'none'};
+  const unit={pauseAll(){a.before.pause();a.after.pause();setIcons(false)}};
+  units.push(unit);
+  const tick=()=>{const c=cur();fill.style.width=(c.currentTime/c.duration*100||0)+'%';time.textContent=fmt(c.currentTime)};
+  [a.before,a.after].forEach(x=>{
+    x.addEventListener('timeupdate',()=>{if(x===cur())tick()});
+    x.addEventListener('ended',()=>{if(x===cur()){setIcons(false);fill.style.width='0%'}});
+  });
+  playBtn.addEventListener('click',()=>{
+    const c=cur();
+    if(c.paused){
+      units.forEach(u=>{if(u!==unit)u.pauseAll()});c.play();setIcons(true);
+      const o=c===a.before?a.after:a.before;if(o.readyState===0){o.preload='auto';o.load()}
+    }else{c.pause();setIcons(false)}
+  });
+  bar.addEventListener('click',e=>{const r=bar.getBoundingClientRect(),c=cur();if(isFinite(c.duration)){c.currentTime=(e.clientX-r.left)/r.width*c.duration;tick()}});
+  function switchTo(m){
+    if(m===mode)return;
+    const from=cur(),was=!from.paused,pos=from.currentTime,ratio=from.duration?pos/from.duration:0;
+    from.pause();mode=m;const to=cur();
+    const target=()=>isFinite(to.duration)&&isFinite(from.duration)&&Math.abs(to.duration-from.duration)>0.5?ratio*to.duration:pos;
+    const seek=()=>{try{to.currentTime=target()}catch(e){}tick()};
+    if(to.readyState>=1)seek();else{to.addEventListener('loadedmetadata',seek,{once:true});if(to.readyState===0)to.load()}
+    if(was){
+      setIcons(true);
+      const p=to.play();
+      to.addEventListener('playing',()=>{if(Math.abs(to.currentTime-target())>0.3)seek()},{once:true});
+      if(p&&p.catch)p.catch(()=>setIcons(false));
+    }
+    swB.classList.toggle('on',m==='before');swA.classList.toggle('on',m==='after');
+    ab.classList.toggle('after',m==='after');
+    state.textContent=m==='before'?LB:LA;
+  }
+  swB.addEventListener('click',()=>switchTo('before'));
+  swA.addEventListener('click',()=>switchTo('after'));
+});
+</script>
+</body>
+</html>
